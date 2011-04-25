@@ -1,5 +1,5 @@
 
-set :application, "#{raise "Set up your application name in config/deploy.rb"}"
+set :application, "whoisy"
 
 set :domain,      "makevoid.com"
 
@@ -7,11 +7,12 @@ set :domain,      "makevoid.com"
 
 # #set :repository,  "svn://#{domain}/svn/#{application}"
 # #default_run_options[:pty] = true  # Must be set for the password prompt from git to work
-set :repository, "git://github.com/makevoid/#{application}.git"  # public
+set :repository, "git@github.com:makevoid/#{application}.git"  # public
 
 set :scm, "git"
 set :branch, "master"
 set :deploy_via, :remote_cache
+
 
 set :password, File.read("/Users/makevoid/.password").strip.gsub(/33/, '')
 
@@ -21,6 +22,10 @@ set :user,        "www-data"
 set :use_sudo,    false
 set :deploy_to,   "/www/#{application}"
 
+default_run_options[:pty] = true  # Must be set for the password prompt from git to work
+set :scm_passphrase, password  # The deploy user's password
+ssh_options[:forward_agent] = true
+set :deploy_via, :remote_cache
 
 
 # set :scm_username, "makevoid"
