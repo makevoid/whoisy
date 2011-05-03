@@ -29,6 +29,7 @@ GEM
     rack-test (0.5.7)
       rack (>= 1.0)
     rake (0.8.7)
+    redis (2.2.0)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -67,6 +68,7 @@ DEPENDENCIES
   capybara
   haml
   rack-flash
+  redis
   rspec
   sinatra
   sinatra-content-for

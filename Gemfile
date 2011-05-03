@@ -4,6 +4,7 @@ gem 'haml'
 gem 'sinatra'
 gem "sinatra-content-for"
 gem 'rack-flash'
+gem 'redis'
 # gem 'dm-core'
 # gem 'dm-sqlite-adapter'
 # gem 'dm-mysql-adapter'

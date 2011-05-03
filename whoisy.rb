@@ -1,6 +1,7 @@
 require 'haml'
 require 'sass'
 require 'sinatra'
+require 'redis'
 enable :sessions
 
 require 'json'
@@ -35,10 +36,19 @@ class Whoisy < Sinatra::Base
   # Whois
   
   WHOIS = Whois::Client.new
-  
+  R = Redis.new
+    
   def whois(domain)
     begin
-      WHOIS.query domain
+      if !R.sismember("domains", domain)
+        result = WHOIS.query domain
+        R.sadd "domains", domain
+        R.zincrby "requests", domain, 1)
+        R.sadd("registered", domain) if result.registered?
+        result
+      else
+        nil
+      end
     rescue Whois::ServerNotFound
       nil
     rescue Timeout::Error
@@ -52,10 +62,19 @@ class Whoisy < Sinatra::Base
 
   def whois_results
     @name = params[:name]
-    @results = [whois(@name)].compact
+    whois(@name)
+    @result = [name, R.sismember("registered",name)]
   end
   
-  get "/whois/:name.js" do
+  get '/migrate' do
+    R.sadd "tld", "com"
+    R.sadd "tld", "it"
+    R.sadd "tld", "net"
+    R.sadd "tld", "org"
+    R.sadd "tld", "uk"
+  end
+  
+  get "/whois/:name.json" do
     whois_results.map do |res|
       { name: res.domain, available: res.available? }
     end.to_json
