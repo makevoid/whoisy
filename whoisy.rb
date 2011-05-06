@@ -12,6 +12,10 @@ APP_PATH = path
 class Whoisy < Sinatra::Base
   require "#{APP_PATH}/config/env"
   
+  configure :development do
+    #use Rack::Reloader#, path: "#{APP_PATH}/public"
+  end
+  
   set :haml, { :format => :html5 }
   require 'rack-flash'
   enable :sessions
@@ -34,20 +38,10 @@ class Whoisy < Sinatra::Base
   
   # Whois
   
-  WHOIS = Whois::Client.new
+  MANAGER = WhoisManager.new
   
   def whois(domain)
-    begin
-      WHOIS.query domain
-    rescue Whois::ServerNotFound
-      nil
-    rescue Timeout::Error
-      # FIME: retry async, cache
-      Thread.new {
-        whois(domain)
-      }
-      nil 
-    end
+    Whois.whois(domain)
   end
 
   def whois_results
