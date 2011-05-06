@@ -11,10 +11,8 @@
   -#     = whois.domain
   -#     is
   -#     = whois.available? ? "available" : "registered"
-      
-%p
-  = @results ? @results[0] : ""
-  is
-  = @results ? 'registered' : 'available'
-    
-
+  
+-# unless @results.nil?
+%ul
+  - @results.each do |it|
+    = partial(:_whois, it)

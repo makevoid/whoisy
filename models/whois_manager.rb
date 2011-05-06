@@ -26,6 +26,7 @@ class WhoisManager
         R.sadd "domains", domain
         #R.zincrby "requests", domain, 1
         R.sadd("registered", domain) if result.registered?
+        #TODO: salvare anche i dettagli del whois
         result
       else
         nil 
@@ -45,13 +46,14 @@ class WhoisManager
   
   DEFAULT_TLD = R.smembers "tld"
   
-  def gen_domains(query, options={})
+  def gen_domains(query, options={tld: nil})
     tld = DEFAULT_TLD
     tld = options[:tld] unless options[:tld].nil?
     first = query.split(".")[0..-2].join(".")
-    tld.map do |tl|
+    tld = tld.map do |tl|
       "#{first}.#{tl}"
     end
+    tld
   end
 
 end
