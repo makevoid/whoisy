@@ -1,6 +1,7 @@
 require 'haml'
 require 'sass'
 require 'sinatra'
+require 'redis'
 enable :sessions
 
 require 'json'
@@ -39,17 +40,28 @@ class Whoisy < Sinatra::Base
   # Whois
   
   MANAGER = WhoisManager.new
-  
+  R = Redis.new
+    
+      
   def whois(domain)
-    Whois.whois(domain)
+    MANAGER.whois domain 
   end
 
   def whois_results
     @name = params[:name]
-    @results = [whois(@name)].compact
+    whois(@name)
+    @result = [@name, R.sismember("registered",@name)]
   end
   
-  get "/whois/:name.js" do
+  get '/migrate' do
+    R.sadd "tld", "com"
+    R.sadd "tld", "it"
+    R.sadd "tld", "net"
+    R.sadd "tld", "org"
+    R.sadd "tld", "uk"
+  end
+  
+  get "/whois/:name.json" do
     whois_results.map do |res|
       { name: res.domain, available: res.available? }
     end.to_json

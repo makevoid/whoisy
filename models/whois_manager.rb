@@ -1,6 +1,7 @@
 class WhoisManager
   
   WHOIS = Whois::Client.new
+  R = ::R
   
   def self.whois(domain)
     new(domain).whois
@@ -19,7 +20,15 @@ class WhoisManager
   
   def single_whois(query)
     begin
-      WHOIS.query domain
+      if !R.sismember("domains", domain)
+        result = WHOIS.query domain
+        R.sadd "domains", domain
+        R.zincrby "requests", domain, 1
+        R.sadd("registered", domain) if result.registered?
+        result
+      else
+        nil
+      end
     rescue Whois::ServerNotFound
       nil
     rescue Timeout::Error
