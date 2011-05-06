@@ -51,8 +51,7 @@ class Whoisy < Sinatra::Base
 
   def whois_results
     @name = params[:name]
-    whois(@name)
-    @result = [@name, R.sismember("registered",@name)]
+    @results = whois(@name);
   end
   
   get '/migrate' do
@@ -79,6 +78,13 @@ class Whoisy < Sinatra::Base
 
   get '/css/main.css' do
     sass :main
+  end
+  
+  helpers do
+    def partial(template, item)
+      @item = item
+      haml template, :layout => false
+    end
   end
   
 end
