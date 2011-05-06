@@ -1,5 +1,5 @@
-%section
-  %form.search{ action: "/whois/", method: "get" }
+%section.search
+  %form#search{ action: "/whois/", method: "get" }
     %input{ type: "text", name: "name", value: params[:name] }
     %input{ type: "submit", value: "Search" }
   

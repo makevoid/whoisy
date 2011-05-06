@@ -16,20 +16,29 @@
     #container
       %header
         %h1 
-          Whoisy
-          %span The smart mobile whois!
+          - link_to "Whoisy", "/"
+          %span
+            - link_to "The smart mobile whois!", "/"
       %nav
       #content
         = yield
       %footer
     %script{ src: "/js/jquery.js", type: "text/javascript" }
+    %script{ src: "/js/moustache.js", type: "text/javascript" }
     %script{ src: "/js/main.js", type: "text/javascript" }
     = yield_content :head
     %script{ type: "text/javascript" }
       $(function(){
       = yield_content :jquery
       });
-    :javascript
-      $(function(){
-        // dom ready
-      });
+    %script#result_tmpl{ type: "text/x-moustache-tmpl" }
+      :plain
+        <ul class='domains'>  
+          {{#results}}                                                           
+            <li>
+              <h3>{{name}}</h3>
+              <p>{{(available) ? "is available" :  "is registered"}}
+            </li>   
+          {{/results}}                                                           
+          {{^results}}<li class='no_results'>No flights found</li>{{/results}}           
+        </ul>
