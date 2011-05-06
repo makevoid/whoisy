@@ -1,7 +1,8 @@
 class WhoisManager
   
   WHOIS = Whois::Client.new
-  R = ::R
+  
+  R = Redis.new
   
   def self.whois(domain)
     new(domain).whois
@@ -13,21 +14,21 @@ class WhoisManager
   
   def whois(query)
     domains = gen_domains(query)
-    domains.each do |domain|
+    domains.map do |domain|
       single_whois domain
     end
   end
   
-  def single_whois(query)
+  def single_whois(domain)
     begin
       if !R.sismember("domains", domain)
         result = WHOIS.query domain
         R.sadd "domains", domain
-        R.zincrby "requests", domain, 1
+        #R.zincrby "requests", domain, 1
         R.sadd("registered", domain) if result.registered?
         result
       else
-        nil
+        nil 
       end
     rescue Whois::ServerNotFound
       nil
@@ -40,10 +41,17 @@ class WhoisManager
     end
   end
   
-  private
+  #private
   
-  def gen_domains(query)
-    //
+  DEFAULT_TLD = R.smembers "tld"
+  
+  def gen_domains(query, options={})
+    tld = DEFAULT_TLD
+    tld = options[:tld] unless options[:tld].nil?
+    first = query.split(".")[0..-2].join(".")
+    tld.map do |tl|
+      "#{first}.#{tl}"
+    end
   end
 
 end

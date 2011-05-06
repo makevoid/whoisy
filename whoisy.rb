@@ -25,6 +25,8 @@ class Whoisy < Sinatra::Base
   helpers Sinatra::ContentFor
   set :method_override, true
 
+  require "#{APP_PATH}/models/whois_manager"
+
   require "#{APP_PATH}/lib/view_helpers"
   helpers ViewHelpers
 
@@ -40,7 +42,7 @@ class Whoisy < Sinatra::Base
   # Whois
   
   MANAGER = WhoisManager.new
-  R = Redis.new
+  R = WhoisManager::R
     
       
   def whois(domain)
@@ -69,6 +71,7 @@ class Whoisy < Sinatra::Base
 
   get "/whois/*" do |name|
     params[:name] = name unless name == ""
+    
     whois_results
     haml :index
   end

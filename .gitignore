@@ -1,6 +1,6 @@
 .DS_Store
-.log
 .sqlite
 .pid
 .sass-cache
 *.rdb
+*.log
