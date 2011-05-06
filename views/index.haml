@@ -4,15 +4,7 @@
     %input{ type: "submit", value: "Search"}
   
 
-%ul#results  
-  -#
-  -# - unless @name.nil?
-  -#   - @results.each do |whois|
-  -#     = whois.domain
-  -#     is
-  -#     = whois.available? ? "available" : "registered"
-  
--# unless @results.nil?
-%ul
-  - @results.each do |it|
-    = partial(:_whois, it)
+%ul#results    
+  - unless @results.nil?
+    - @results.each do |it|
+      = partial(:_whois, it)
