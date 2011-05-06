@@ -63,9 +63,9 @@ class Whoisy < Sinatra::Base
   end
   
   get "/whois/:name.json" do
-    whois_results.map do |res|
-      { name: res.domain, available: res.available? }
-    end.to_json
+    { results: whois_results.map do |res|
+      { name: res[0], available: res[1] }
+    end }.to_json 
   end
 
   get "/whois/*" do |name|

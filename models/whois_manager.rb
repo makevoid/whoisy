@@ -25,11 +25,13 @@ class WhoisManager
         result = WHOIS.query domain
         R.sadd "domains", domain
         #R.zincrby "requests", domain, 1
-        R.sadd("registered", domain) if result.registered?
+        available = result.available?
+        R.sadd("available", domain) if available
         #TODO: salvare anche i dettagli del whois
-        result
+        
+        [domain, available]
       else
-        nil 
+        [domain, R.sismember("available", domain)]
       end
     rescue Whois::ServerNotFound
       nil
