@@ -43,7 +43,7 @@ class Whoisy < Sinatra::Base
       if !R.sismember("domains", domain)
         result = WHOIS.query domain
         R.sadd "domains", domain
-        R.zincrby "requests", domain, 1)
+        R.zincrby "requests", domain, 1
         R.sadd("registered", domain) if result.registered?
         result
       else
@@ -63,7 +63,7 @@ class Whoisy < Sinatra::Base
   def whois_results
     @name = params[:name]
     whois(@name)
-    @result = [name, R.sismember("registered",name)]
+    @result = [@name, R.sismember("registered",@name)]
   end
   
   get '/migrate' do
