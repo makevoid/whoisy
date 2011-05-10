@@ -27,8 +27,19 @@ function do_search() {
     success: function(data){    
       //$("#spinner").hide()
       //$("#results").fadeIn("fast")
-      
-      var html = Mustache.to_html(template, data)
+
+			//antani = data;
+			
+			
+
+			for (var i = 0; i < data['results'].length; ++i)
+			{
+				if (data['results'][i]['available'])
+					data['results'][i]['availableString'] = 'is available.'
+				else
+					data['results'][i]['availableString'] = 'is registered.'
+			}
+      var html = Mustache.to_html($("#result_tmpl").html(), data)
       $("#results").html(html)
     }
   }) 

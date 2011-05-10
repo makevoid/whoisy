@@ -2,9 +2,10 @@
   %form#search{ action: "javascript:void(0);", method: "get" }
     %input{ type: "text", name: "name", value: params[:name] }
     %input{ type: "submit", value: "Search"}
-  
 
-%ul#results    
-  - unless @results.nil?
-    - @results.each do |it|
-      = partial(:_whois, it)
+#results  
+  %ul
+    - unless @results.nil?
+      - @results.each do |it|
+        = partial(:_whois, it)
+

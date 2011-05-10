@@ -35,9 +35,9 @@
       :plain
         <ul class='domains'>  
           {{#results}}                                                           
-            <li>
+            <li class="avail_{{available}}">
               <h3>{{name}}</h3>
-              <p>{{(available) ? "is available" :  "is registered"}}
+              <p>{{availableString}}</p>
             </li>   
           {{/results}}                                                           
           {{^results}}<li class='no_results'>No flights found</li>{{/results}}           
