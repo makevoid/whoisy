@@ -20,6 +20,9 @@ function do_search() {
   //console.log(data)
   //$("#spinner").show("fast")
   //$("#results").fadeOut("fast")
+  
+  $("#results").html('<img class="spinner" src="/images/spinner.gif">')
+  
   $.ajax({
     url: "/whois/"+$("form#search input[type=text]").val()+".json",
     dataType: 'json',
