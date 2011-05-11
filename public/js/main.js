@@ -1,9 +1,9 @@
 function centerUI() {
-  var search = $(".search");
-  var searchHeight = search.height()
+  var search = $(".search, header")
+  var searchHeight = $(".search").height()
   var centerY = ($(document).height())/2 - searchHeight/2 - searchStartY
   search.css("webkitTransform", "translate(0, "+centerY+"px)")
-  console.log($(document).height())
+  //console.log($(document).height())
 }
 
 var searchStartY = $(".search").offset().top
@@ -64,7 +64,7 @@ function templates() {
 }
 
 $(function(){
-  //ui()
+  ui()
   
   templates()
 })
