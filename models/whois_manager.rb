@@ -23,12 +23,16 @@ class WhoisManager
     begin
       if !R.sismember("domains", domain)
         result = WHOIS.query domain
+
         R.sadd "domains", domain
         #R.zincrby "requests", domain, 1
         available = result.available?
         R.sadd("available", domain) if available
         #TODO: salvare anche i dettagli del whois
         
+        result.technical_contact.each_pair do |k,v|
+          R.hset domain, "#{k}", "#{v}"
+        end unless result.technical_contact.nil?
         [domain, available]
       else
         [domain, R.sismember("available", domain)]
