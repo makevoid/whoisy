@@ -51,7 +51,7 @@ class Whoisy < Sinatra::Base
 
   def whois_results
     @name = params[:name]
-    @results = whois(@name);
+    @results = whois(@name)
   end
   
   get '/migrate' do
@@ -61,11 +61,20 @@ class Whoisy < Sinatra::Base
     R.sadd "tld", "org"
     R.sadd "tld", "uk"
   end
+
+  get "/whois/:name/infos.json" do
+    keys = R.hkeys params[:name]
+    results = {}
+    keys.each do |k|
+      results[k] = R.hget params[:name],k
+    end
+    { results: results }.to_json 
+  end
   
   get "/whois/:name.json" do
-    whois_results.map do |res|
-      { name: res.domain, available: res.available? }
-    end.to_json
+    { results: whois_results.map do |res|
+      { name: res[0], available: res[1]}
+    end }.to_json 
   end
 
   get "/whois/*" do |name|

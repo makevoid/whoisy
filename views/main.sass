@@ -58,10 +58,30 @@ input[type='submit'], input.submit, a.button
   +button
   +color($main)
 
+.spinner
+  margin: 0 auto
+
 #container
   width: 85%
   margin: 0 auto 40px 
   padding-top: 30px
+  
+#results
+  margin-top: 15px
+  li
+    display: block
+    width: 50%
+    padding: 5px
+    margin: 5px 0
+    border: 1px solid #000
+    h3
+      display: inline
+    p
+      display: inline
+  li.avail_true
+    border: 2px solid rgb(52,156,0)
+  li.avail_false
+    border: 2px solid rgb(209,8,8)
   
 p 
   font-size: 0.9em
