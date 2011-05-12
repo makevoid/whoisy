@@ -54,6 +54,7 @@ class Whoisy < Sinatra::Base
     @results = whois(@name)
   end
   
+  # TODO: uncomment when ready for production
   # if ENV["RACK_ENV"] == "development"
   get '/migrate' do
     R.flushdb
