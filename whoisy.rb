@@ -54,13 +54,17 @@ class Whoisy < Sinatra::Base
     @results = whois(@name)
   end
   
+  # if ENV["RACK_ENV"] == "development"
   get '/migrate' do
+    R.flushdb
     R.sadd "tld", "com"
     R.sadd "tld", "it"
     R.sadd "tld", "net"
     R.sadd "tld", "org"
     R.sadd "tld", "uk"
+    "redis migrated! (don't forget me :D)"
   end
+  # end
 
   get "/whois/:name/infos.json" do
     keys = R.hkeys params[:name]
