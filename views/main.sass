@@ -48,6 +48,9 @@ body
   font-family: sans-serif, Helvetica, Arial, Verdana
   color: $txt
   font-size: 120%
+  +gradient(#111, #333)
+  height: 100%
+  min-height: 100%
 
 a
   color: $links
@@ -62,9 +65,15 @@ input[type='submit'], input.submit, a.button
   margin: 0 auto
 
 #container
-  width: 85%
-  margin: 0 auto 40px 
-  padding-top: 30px
+  margin-bottom: 30px
+  
+header
+  +gradient(#333, #111)
+
+  padding: 30px 3% 5px
+  
+#content
+  padding: 10px 3% 0
   
 #results
   margin-top: 15px
@@ -103,7 +112,7 @@ p
   font-size: 0.9em
   
 h1 
-  margin-bottom: 20px
+  margin-bottom: 5px
   font-size: 2em
   span
     font-size: 0.55em

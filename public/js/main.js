@@ -112,13 +112,13 @@ function whois_window_open(elem) {
 
 function whois_window_close(elem) {
   elem.attr("data-whois-status", "closed")
-  elem.animate({ width: "40%" }, 500)
+  elem.animate({ width: "50%" }, 500)
   elem.find(".whois_box").fadeOut()
 }
 
 function whois_window_reopen(elem) {
   elem.attr("data-whois-status", "opened")
-  elem.animate({ width: "100%" }, 500)
+  elem.animate({ width: "80%" }, 500)
   elem.find(".whois_box").fadeIn()
 }
 
