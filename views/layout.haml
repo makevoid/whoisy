@@ -34,10 +34,31 @@
       :plain
         <ul class='domains'>  
           {{#results}}                                                           
-            <li class="avail_{{available}}">
+            <li class="avail_{{available}}" data-name="{{name}}">
               <h3>{{name}}</h3>
               <p>{{availableString}}</p>
             </li>   
           {{/results}}                                                           
           {{^results}}<li class='no_results'>No records found</li>{{/results}}           
         </ul>
+    %script#whois_tmpl{ type: "text/x-moustache-tmpl" }
+      :plain
+        <div class='whois_box'>
+          ...
+          <h5>Technical Contact:</h5>
+          <p>Name: {{name}}</p>
+          <p>Organization: {{organization}}</p>
+          <p>Country: {{country}}</p>
+          <p>State: {{state}}</p>
+          <p>City: {{city}}</p>
+          <p>Address: {{address}}</p>
+          <p>ZIP: {{zip}}</p>
+          <p>Country code: {{country_code}}</p>
+          <p>Email: {{email}}</p>
+          <p>Phone: {{phone}}</p>
+          <p>Fax: {{fax}}</p>
+          <p>Created on: {{created_on}}</p>
+          <p>Updated on: {{updated_on}}</p>
+          <h5>Administrative Contact:</h5>
+          ...
+        </div>

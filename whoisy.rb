@@ -68,7 +68,7 @@ class Whoisy < Sinatra::Base
     keys.each do |k|
       results[k] = R.hget params[:name],k
     end
-    { results: results }.to_json 
+    results.to_json 
   end
   
   get "/whois/:name.json" do
