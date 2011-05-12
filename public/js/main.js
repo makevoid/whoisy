@@ -40,7 +40,7 @@ function do_search() {
     search_animation()  
   
   $.ajax({
-    url: "/whois/"+$("form#search input[type=text]").val()+".json",
+    url: "/whois/"+$("form#search input[type=url]").val()+".json",
     dataType: 'json',
     type: "GET",
     success: function(data){    
