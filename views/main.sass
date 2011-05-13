@@ -99,10 +99,10 @@ header
 
 .whois_box    
   +gradient(#FFF, #AAA)
-  +rounded(12px)
+  +rounded(20px)
   color: #222
   padding: 8px 15px
-  margin: 15px 20px
+  //margin: 15px 20px
 
 #results li .whois_box p 
   display: block
@@ -123,10 +123,31 @@ input
   padding: 2px 5px 3px
   font-size: 1.1em
   
-#search input[type='url']
-  width: 55%
 
     
 #src, header
   -webkit-animation-name: changeScale
-  -webkit-transition: all 0.5s linear
+  -webkit-transition: all 0.5s ease-in-out
+
+
+#details
+  opacity: 0
+  display: none
+  position: absolute
+  padding: 20px 5%
+  width: 90%
+  -webkit-transition: opacity 0.8s ease-in-out
+  .cont
+    display: block
+    color: #222
+
+#details.open
+  display: block
+
+#details.close
+  opacity: 0
+  
+#search input[type='text'], #search input[type='url']
+  width: 55%
+  
+// DIAHANE al sass bundle

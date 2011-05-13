@@ -1,3 +1,5 @@
+var cache = {};
+
 function centerUI() {
   var search = $("#src, header")
   var searchHeight = $(".search").height()
@@ -21,9 +23,6 @@ function ui() {
 function search_animation() {
   var src = document.getElementById("src")
 
-  src.addEventListener('webkitAnimationEnd', function(){
-    alert("a")
-  }, false)
   src.style.webkitTransform = "rotate(-20deg)"
   var search = $("#src, header")
   search.css("webkitTransform", "translate(0, "+0+"px)")
@@ -40,7 +39,7 @@ function do_search() {
     search_animation()  
   
   $.ajax({
-    url: "/whois/"+$("form#search input[type=url]").val()+".json",
+    url: "/whois/"+$("form#search #name").val()+".json",
     dataType: 'json',
     type: "GET",
     success: function(data){    
@@ -91,13 +90,52 @@ function templates() {
 
 function whois_completed(elem) {
   
-  elem.animate({width: "100%" }, 500)
+  //elem.animate({width: "100%" }, 500)
 }
 
-function whois_window_open(elem) {
+//
+// var src = document.getElementById("src")
+// 
+// src.addEventListener('webkitAnimationEnd', function(){
+//   alert("a")
+// }, false)
+// src.style.webkitTransform = "translate(0)"
+// var search = $("#src, header")
+// search.css("webkitTransform", "translate(0, "+0+"px)")
+
+
+function addEventsWebkit() {
+  var details = document.getElementById("details")
+  details.addEventListener('webkitAnimationEnd', function(){
+    alert("a")
+  }, false)
+}
+
+function whois_render(html) {
+  $("#details").css("display", "block")
+  setTimeout(function(){ 
+    $("#details .cont").html(html)
+    $("#details").css("opacity", 1)
+  }, 100)
+  // $("#details").animate({opacity: 1}, 800)
+  // $("#details").addClass("open")
+}
+
+function whois_close() {
+  // $("#details").animate({opacity: 0}, 800, function(){
+  //   $("#details").removeClass("open")
+  // })
+
+  $("#details").css("opacity", 0)
+  setTimeout(function(){ 
+    $("#details").css("display", "none")
+  }, 800)
+}
+
+function whois_open(elem) { // whois_window_open
   elem.attr("data-whois-status", "opened")
   //$(this).css("width", "60%")
-  elem.animate({ width: "60%" }, 500)
+  //elem.animate({ width: "60%" }, 500)
 
   var name = elem.attr("data-name")
   $.getJSON("/whois/"+name+"/infos.json", function(data){
@@ -106,7 +144,10 @@ function whois_window_open(elem) {
     // TODO: renderizzare con moustache
     console.log(data)
     var html = Mustache.to_html($("#whois_tmpl").html(), data)
-    elem.append(html)
+    //elem.append(html)
+  
+    cache[name] = html
+    whois_render(html)
   })
 }
 
@@ -122,7 +163,7 @@ function whois_window_reopen(elem) {
   elem.find(".whois_box").fadeIn()
 }
 
-function events() {
+function eventsDesktop() {
   $("#results li").live("click", function(){
     var elem = $(this)
     
@@ -139,9 +180,30 @@ function events() {
   })
 }
 
+function eventsMobile() {
+  $("#results li").live("click", function(){
+    var elem = $(this)
+    var html = cache[elem.attr("data-name")]
+    
+    if (html)
+      whois_render(html)
+    else
+      whois_open(elem)
+      
+  })
+  
+  $("#details").bind("click", function() {
+    whois_close()
+  })
+}
+ 
 $(function(){
   //ui()
 	templates()
 	
-	events()
+  // eventsDesktop()
+  eventsMobile()	
+  
+  if (!navigator.userAgent.match(/Chrome/))
+    $("#search input[type=text]").attr("type", "url")
 })

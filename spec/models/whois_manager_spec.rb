@@ -3,7 +3,7 @@ require "spec_helper"
 describe WhoisManager do
   it "should match one domain" do
     manager = WhoisManager.new
-    tlds = ["com", "it", "net", "org", "uk"]    
+    tlds = ["com", "it", "net", "org", "co.uk"]    
     manager.gen_domains("google.com").to_set.should ==  tlds.map{ |t| "google.#{t}" }.to_set
   end                                                         
                                                               

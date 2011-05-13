@@ -62,7 +62,7 @@ class Whoisy < Sinatra::Base
     R.sadd "tld", "it"
     R.sadd "tld", "net"
     R.sadd "tld", "org"
-    R.sadd "tld", "uk"
+    R.sadd "tld", "co.uk"
     "redis migrated! (don't forget me :D)"
   end
   # end
