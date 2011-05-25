@@ -79,7 +79,7 @@ function templates() {
 	  return false
 	})
 
-	$("form#search input.submit").click(function(e){
+	$("form#search input#query.submit").click(function(e){
 	  do_search()
 	  prevent_default(e)
 	  return false
