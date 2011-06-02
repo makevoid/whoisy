@@ -15,20 +15,21 @@
   %body{ class: body_class, onload: "addEventsWebkit()" }  
     #details
       .cont
-        %p Technical Contact:
-        %p Name:
-        %p Organization:
-        %p Country:
-        %p State:
-        %p City:
-        %p Address:
-        %p ZIP:
-        %p Country code:
-        %p Email:
-        %p Phone:
-        %p Fax:
-        %p Created on:
-        %p Updated on:
+        -#
+          %p Technical Contact:
+          %p Name:
+          %p Organization:
+          %p Country:
+          %p State:
+          %p City:
+          %p Address:
+          %p ZIP:
+          %p Country code:
+          %p Email:
+          %p Phone:
+          %p Fax:
+          %p Created on:
+          %p Updated on:
     #container
       %header
         %h1 
@@ -78,4 +79,5 @@
           <h5>Administrative Contact:</h5>
           ...
         </div>
+    %script#prefs_tmpl{ type: "text/x-moustache-tmpl" }
         

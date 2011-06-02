@@ -111,6 +111,13 @@ function addEventsWebkit() {
   }, false)
 }
 
+function prefs_render() {
+  $.getJSON("/tld.json", function(data){
+    var html = Mustache.to_html($("#prefs_tmpl").html(), data)
+    whois_render(html)
+  })
+}
+
 function whois_render(html) {
   $("#details").css("display", "block")
   setTimeout(function(){ 

@@ -66,6 +66,11 @@ class Whoisy < Sinatra::Base
     "redis migrated! (don't forget me :D)"
   end
   # end
+  
+  get "/tld.json" do
+    { results: R.smembers("tld") }.to_json
+    
+  end
 
   get "/whois/:name/infos.json" do
     keys = R.hkeys params[:name]
