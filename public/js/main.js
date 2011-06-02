@@ -163,6 +163,58 @@ function whois_window_reopen(elem) {
   elem.find(".whois_box").fadeIn()
 }
 
+
+/* local storage and preferences */
+
+function prefs_tld_add(tld) {
+  if (!Modernizr.localstorage)
+    return
+
+  var ls = localStorage.getItem("whoisy.tld")
+  var tlds = ls != null ? eval(ls) : new Array()
+    
+  if (jQuery.inArray(tld,tlds) == -1) {
+    tlds.push(tld);
+    localStorage.setItem("whoisy.tld",JSON.stringify(tlds));
+  }
+}
+
+function prefs_tld_rem(tld) {
+  if (!Modernizr.localstorage)
+    return
+  
+  var ls = localStorage.getItem("whoisy.tld")
+  
+  if (ls == null)
+    return
+
+  var tlds = eval(localStorage.getItem("whoisy.tld"));
+  var index = jQuery.inArray(tld,tlds)
+
+  if (index != -1) {
+    tlds.splice(index,1)
+    localStorage.setItem("whoisy.tld",JSON.stringify(tlds));
+  }
+}
+
+function prefs_tld_clear() {
+  if (!Modernizr.localstorage)
+    return
+  
+  localStorage.removeItem("whoisy.tld")
+}
+
+function prefs_tld_get() {
+  if (!Modernizr.localstorage)
+    return
+    
+  return eval(localStorage.getItem("whoisy.tld"));
+}
+
+
+
+
+
 function eventsDesktop() {
   $("#results li").live("click", function(){
     var elem = $(this)
