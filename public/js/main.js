@@ -251,6 +251,8 @@ function eventsMobile() {
       
   })
   
+  $("#search input#prefs").bind("click", function() { prefs_render() })
+  
   $("#details").bind("click", function() {
     whois_close()
   })
