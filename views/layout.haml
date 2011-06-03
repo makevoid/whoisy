@@ -83,6 +83,12 @@
       :plain
         <div class='whois_box'>
           <p>This frame allows to set up preferences to filter out domains. Mark a specific top level domain name to exclude it from searches.
-          </p>
+          </p>    
+          <form id='tlds' action='javascript:void(0)' method='get'>
+          {{#results}}
+            <input type='checkbox' name='{{tld}}' value='{{tld}}'/> {{tld}}
+            <br>
+          {{/results}}
+          </form>
         </div>
         

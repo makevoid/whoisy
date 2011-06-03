@@ -115,6 +115,7 @@ function prefs_render() {
   $.getJSON("/tld.json", function(data){
     var html = Mustache.to_html($("#prefs_tmpl").html(), data)
     whois_render(html)
+    setTimeout(function(){prefs_tld_update()},100)
   })
 }
 
@@ -218,9 +219,24 @@ function prefs_tld_get() {
   return eval(localStorage.getItem("whoisy.tld"));
 }
 
+function prefs_tld_is_set(tld) {
+  var tlds = eval(localStorage.getItem("whoisy.tld"))
+  
+  
+  if (tlds == null || jQuery.inArray(tld,tlds) == -1)
+    return false
+  else
+    return true
+}
 
-
-
+function prefs_tld_update() {
+  jQuery("form#tlds input[type=checkbox]").each(function(i){
+    if (prefs_tld_is_set(jQuery(this).attr("value")))
+      jQuery(this).attr('checked', 'true')
+    else
+      jQuery(this).removeAttr('checked')
+  })
+}
 
 function eventsDesktop() {
   $("#results li").live("click", function(){

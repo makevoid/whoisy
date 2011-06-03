@@ -68,7 +68,7 @@ class Whoisy < Sinatra::Base
   # end
   
   get "/tld.json" do
-    { results: R.smembers("tld") }.to_json
+    { results: R.smembers("tld").map do |i| {tld: i} end }.to_json
     
   end
 
