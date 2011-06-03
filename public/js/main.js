@@ -32,7 +32,6 @@ function do_search() {
   //console.log(data)
   //$("#spinner").show("fast")
   //$("#results").fadeOut("fast")
-  
   $("#results").html('<img class="spinner" src="/images/spinner.gif">')
   
   if (ui_animated) 
@@ -72,14 +71,14 @@ function prevent_default(event) {
 }
 
 function templates() {
-	$("form#search").live('submit', function(e){
+	$("form#search input").live('submit', function(e){
 	  do_search()
 
 	  prevent_default(e)
 	  return false
 	})
 
-	$("form#search input#query.submit").click(function(e){
+	$("#search input#query").click(function(e){
 	  do_search()
 	  prevent_default(e)
 	  return false
@@ -140,7 +139,14 @@ function whois_close() {
   }, 800)
 }
 
-function whois_open(elem) { // whois_window_open
+function whois_open(elem) { 
+  $("#details").unbind("click")
+  $("#details").bind("click", function() {
+    whois_close()
+  })
+  
+  
+  // whois_window_open
   elem.attr("data-whois-status", "opened")
   //$(this).css("width", "60%")
   //elem.animate({ width: "60%" }, 500)
@@ -231,10 +237,25 @@ function prefs_tld_is_set(tld) {
 
 function prefs_tld_update() {
   jQuery("form#tlds input[type=checkbox]").each(function(i){
-    if (prefs_tld_is_set(jQuery(this).attr("value")))
-      jQuery(this).attr('checked', 'true')
+    var t = jQuery(this)
+    
+    if (prefs_tld_is_set(t.attr("value")))
+      t.attr('checked', 'true')
     else
-      jQuery(this).removeAttr('checked')
+      t.removeAttr('checked')
+      
+    t.unbind('click')
+    
+    t.click(function(){
+      if (prefs_tld_is_set(t.attr("value"))) {
+        t.removeAttr('checked')
+        prefs_tld_rem(t.attr("value"))
+      }
+      else {
+        t.attr('checked','true')
+        prefs_tld_add(t.attr("value"))
+      }
+    })
   })
 }
 
@@ -267,11 +288,9 @@ function eventsMobile() {
       
   })
   
-  $("#search input#prefs").bind("click", function() { prefs_render() })
+  $("#prefs_close").live("click", function() { whois_close() })
   
-  $("#details").bind("click", function() {
-    whois_close()
-  })
+  $("#search input#prefs").bind("click", function() { prefs_render(); $("#details").unbind("click") })
 }
  
 $(function(){
