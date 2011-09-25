@@ -1,14 +1,14 @@
 require "spec_helper"
 
-describe WhoisManager do
+describe Whoiser do
   it "should match one domain" do
-    manager = WhoisManager.new
+    manager = Whoiser.new
     tlds = ["com", "it", "net", "org", "co.uk"]    
     manager.gen_domains("google.com").to_set.should ==  tlds.map{ |t| "google.#{t}" }.to_set
   end                                                         
                                                               
   it "should match one domain and accept tld options" do      
-    manager = WhoisManager.new                                
+    manager = Whoiser.new                                
     options = {                                               
       tld: ["it", "com"]
     }

@@ -1,20 +1,18 @@
-require 'haml'
-require 'sass'
-require 'sinatra'
-require 'redis'
-enable :sessions
-
-require 'json'
-require 'whois'
-
 path = File.expand_path "../", __FILE__
 APP_PATH = path
+
+require 'bundler/setup'
+Bundler.require :default
+
 
 class Whoisy < Sinatra::Base
   require "#{APP_PATH}/config/env"
   
   configure :development do
-    #use Rack::Reloader#, path: "#{APP_PATH}/public"
+    register Sinatra::Reloader
+    also_reload ["controllers/*.rb", "models/*.rb", "public/projects/*.haml"]
+    set :public, "public"
+    set :static, true
   end
   
   set :haml, { :format => :html5 }
@@ -24,8 +22,11 @@ class Whoisy < Sinatra::Base
   require 'sinatra/content_for'
   helpers Sinatra::ContentFor
   set :method_override, true
-
-  require "#{APP_PATH}/models/whois_manager"
+  
+  require "#{APP_PATH}/lib/mhash"
+  Dir.glob("#{APP_PATH}/models/*.rb").each do |model|
+    require model
+  end
 
   require "#{APP_PATH}/lib/view_helpers"
   helpers ViewHelpers
@@ -41,8 +42,7 @@ class Whoisy < Sinatra::Base
   
   # Whois
   
-  MANAGER = WhoisManager.new
-  R = WhoisManager::R
+  MANAGER = Whoiser.new
     
       
   def whois(domain)
@@ -54,22 +54,8 @@ class Whoisy < Sinatra::Base
     @results = whois(@name)
   end
   
-  # TODO: uncomment when ready for production
-  # if ENV["RACK_ENV"] == "development"
-  get '/migrate' do
-    R.flushdb
-    R.sadd "tld", "com"
-    R.sadd "tld", "it"
-    R.sadd "tld", "net"
-    R.sadd "tld", "org"
-    R.sadd "tld", "co.uk"
-    "redis migrated! (don't forget me :D)"
-  end
-  # end
-  
   get "/tld.json" do
-    { results: R.smembers("tld").map do |i| {tld: i} end }.to_json
-    
+    { results: Tld.all.map{ {tld: i} } }.to_json  
   end
 
   get "/whois/:name/infos.json" do
@@ -82,8 +68,8 @@ class Whoisy < Sinatra::Base
   end
   
   get "/whois/:name.json" do
-    { results: whois_results.map do |res|
-      { name: res[0], available: res[1]}
+    { results: whois_results.map do |domain|
+      { name: domain.name, available: domain.available}
     end }.to_json 
   end
 

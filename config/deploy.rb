@@ -1,4 +1,3 @@
-
 set :application, "whoisy"
 
 set :domain,      "makevoid.com"
@@ -141,4 +140,3 @@ namespace :db do
     `mysql -u root #{application}_development < #{local_path}/db/#{application}_production.sql`
   end
 end
-
