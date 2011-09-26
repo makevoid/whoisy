@@ -21,8 +21,8 @@ set :user,        "www-data"
 set :use_sudo,    false
 set :deploy_to,   "/www/#{application}"
 
-default_run_options[:pty] = true  # Must be set for the password prompt from git to work
-set :scm_passphrase, password  # The deploy user's password
+# default_run_options[:pty] = true  # Must be set for the password prompt from git to work
+# set :scm_passphrase, password  # The deploy user's password
 ssh_options[:forward_agent] = true
 set :deploy_via, :remote_cache
 
@@ -38,7 +38,7 @@ role :db,  domain, :primary => true
 
 
 after :deploy, "deploy:cleanup"
-after :deploy, "deploy:create_symlinks"
+# after :deploy, "deploy:create_symlinks"
 #after :deploy, "db:seeds"
 
 namespace :deploy do
@@ -60,13 +60,7 @@ namespace :bundle do
   task :install do
     run "cd #{current_path}; bundle install --relock"
   end
-  
-  desc "Commit, deploy and install"
-  task :installscom do
-    `svn commit -m ''`
-    `cap deploy`
-    `cap bundle:install`
-  end
+
 end
 
 # ...

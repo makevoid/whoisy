@@ -14,17 +14,10 @@ class Whoiser
   end
   
   def single_whois(domain)
-    begin
-      do_single_whois(domain)
-    rescue Whois::ServerNotFound
-      nil
-    rescue Timeout::Error
-      # FIME: retry async, cache
-      Thread.new {
-        whois(domain)
-      }
-      nil 
-    end
+    do_single_whois(domain)
+    # rescue exceptions properly
+    # Whois::ServerNotFound
+    # Timeout::Error
   end
   
   include Mhash
