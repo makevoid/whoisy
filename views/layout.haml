@@ -11,25 +11,8 @@
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %meta{ name: "apple-mobile-web-app-capable", content: "yes" }
     %meta{ name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" }
-    %script{ src: "/js/modernizr.js", type: "text/javascript" }
+    %script{ src: "/js/vendor/modernizr.js", type: "text/javascript" }
   %body{ class: body_class, onload: "addEventsWebkit()" }  
-    #details
-      .cont
-        -#
-          %p Technical Contact:
-          %p Name:
-          %p Organization:
-          %p Country:
-          %p State:
-          %p City:
-          %p Address:
-          %p ZIP:
-          %p Country code:
-          %p Email:
-          %p Phone:
-          %p Fax:
-          %p Created on:
-          %p Updated on:
     #container
       %header
         %h1 
@@ -39,8 +22,8 @@
       #content
         = yield
       %footer
-    %script{ src: "/js/jquery.js", type: "text/javascript" }
-    %script{ src: "/js/moustache.js", type: "text/javascript" }
+    %script{ src: "/js/vendor/jquery.js", type: "text/javascript" }
+    %script{ src: "/js/vendor/moustache.js", type: "text/javascript" }
     %script{ src: "/js/main.js", type: "text/javascript" }
     = yield_content :head
     %script{ type: "text/javascript" }
