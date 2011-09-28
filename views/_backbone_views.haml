@@ -1,4 +1,13 @@
-%script#result_tmpl{ type: "text/x-moustache-tmpl" }
+%script.results_view{ type: "text/haml" }
+  :plain
+    %ul.results
+    
+%script.result_view{ type: "text/haml" }
+  :plain
+    %li result
+
+
+%script#result_tmpl_old{ type: "text/x-moustache-tmpl" }
   :plain
     <ul class='domains'>  
       {{#results}}                                                           

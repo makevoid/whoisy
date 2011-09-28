@@ -5,7 +5,6 @@ class User
   property :email, String, length: 255
   property :created_at, DateTime
   
-  
-  belongs_to :domain, trough: :user_domain
-  
+  # has 1, :domain, { through: :domain_user }
+  has n, :domains, { through: :domain_user }
 end

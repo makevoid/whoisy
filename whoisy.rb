@@ -6,7 +6,6 @@ Bundler.require :default
 
 
 class Whoisy < Sinatra::Base
-  require "#{APP_PATH}/config/env"
   
   configure :development do
     register Sinatra::Reloader
@@ -14,6 +13,10 @@ class Whoisy < Sinatra::Base
     set :public, "public"
     set :static, true
   end
+  
+  require "#{APP_PATH}/config/env"
+  include Voidtools::Sinatra::ViewHelpers
+
   
   set :haml, { :format => :html5 }
   require 'rack-flash'
@@ -23,10 +26,7 @@ class Whoisy < Sinatra::Base
   helpers Sinatra::ContentFor
   set :method_override, true
   
-  require "#{APP_PATH}/lib/mhash"
-  Dir.glob("#{APP_PATH}/models/*.rb").each do |model|
-    require model
-  end
+
 
   require "#{APP_PATH}/lib/view_helpers"
   helpers ViewHelpers
@@ -42,16 +42,20 @@ class Whoisy < Sinatra::Base
   
   # Whois
   
-  MANAGER = Whoiser.new
+  WHOISER = Whoiser.new
     
       
   def whois(domain)
-    MANAGER.whois domain 
+    WHOISER.whois domain 
   end
 
   def whois_results
-    @name = params[:name]
+    @name = params[:domain]
     @results = whois(@name)
+  end
+  
+  def valid_domain?
+    params[:domain] =~ /\./ && Tld.all.include?(Whoiser.tld(params[:domain]))
   end
   
   get "/tld.json" do
@@ -59,31 +63,40 @@ class Whoisy < Sinatra::Base
   end
 
   get "/whois/:name/infos.json" do
-    keys = R.hkeys params[:name]
+    keys = R.hkeys params[:domain]
     results = {}
     keys.each do |k|
-      results[k] = R.hget params[:name],k
+      results[k] = R.hget params[:domain],k
     end
     results.to_json 
   end
   
-  get "/whois/:name.json" do
-    { results: whois_results.map do |domain|
-      { name: domain.name, available: domain.available}
-    end }.to_json 
+  get "/whois/:domain" do
+    if valid_domain?
+      domains = []
+      whois_results.each do |domain|
+        domains << { name: domain.name, ext: domain.ext, available: domain.available }
+      end 
+      { results: domains }.to_json 
+    else
+      { error: "domain not valid: #{params[:domain]}" }.to_json
+    end
   end
-
+  
+  get "/whois" do
+    { results: [
+      { name: "makevoid.com", ext: "com", available: true },
+      { name: "makevoid.net", ext: "net", available: true },
+    ] }.to_json
+  end
+    
   get "/whois/*" do |name|
-    params[:name] = name unless name == ""
+    params[:domain] = name unless name == ""
     
     whois_results
     haml :index
   end
   
-
-  get '/css/main.css' do
-    sass :main
-  end
   
   helpers do
     def partial(template, item)

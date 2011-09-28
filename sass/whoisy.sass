@@ -1,0 +1,271 @@
+@import "libs"
+
+
+@import compass/utilities/general/clearfix
+@import compass/reset/utilities
+
+=custom-reset // fork of global-reset
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video
+    +reset-box-model
+    +reset-font
+  body
+    +reset-body
+  ol, ul
+    +reset-list-style
+  table
+    //   +reset-table
+    border-spacing: 0
+  caption, th, td
+    +reset-table-cell
+  q, blockquote
+    +reset-quotation
+  a img
+    +reset-image-anchor-border
+  +reset-html5
+
+  // de-reset - useful defaults
+  h1, h2, h3, h4, h5, h6  
+    font-weight: bold
+
++custom-reset
+
+@import compass/utilities/tables
+@import compass/utilities/tables/scaffolding
+@import compass/css3/border-radius
+@import compass/typography/links/link-colors
+// @import compass/typography/vertical_rhythm
+@import compass/css3
+
+$default-radius: 12px
+
+
+$table-color: #EBEFF0
+
+
+
+a 
+  text-decoration: none
+  
+.clear
+  clear: both
+
+  
+// style
+
+$bg: #111
+$bg_cont: #FFF
+$txt: #FFF
+$main: #999
+$alt: #666
+$links: #EEE
+
+
+html
+  height: 100%
+
+body
+  background: $bg
+  font-family: Helvetica, sans-serif, Arial, Verdana
+  color: $txt
+  font-size: 120%
+  +background-image(linear-gradient(#DFDEDA, #92949C))
+  height: 100%
+  min-height: 100%
+
+a
+  color: $links
+a:hover
+  color: $links + #111
+
+
+input[type='submit'], input.submit, a.button
+
+
+.spinner
+  margin: 0 auto
+
+#container
+  margin-bottom: 30px
+  
+$inner_width: 93%
+
+
+// colors
+
+$gold: #FFE100
+$brown: #BB8E00
+$dark_grey: #666
+
+
+header
+  +background-image(linear-gradient(lighten($gold, 40%), $gold, $brown))
+  $text_color: #000
+  color: $text_color
+  border-bottom: 2px solid #666
+  +box-shadow-mk(0, 3px, 3px, #666)
+  .inner
+    width: $inner_width
+    margin: 0 auto
+    padding: 4px 0
+    a
+      color: $text_color
+      &:hover
+        color: lighten($text_color, 30%)
+  
+#content
+  margin: 20px auto
+  width: $inner_width
+  
+  
+#results
+  margin-top: 15px
+  li
+    display: block
+    width: 75%
+    padding: 5px
+    margin: 10px 0
+    border: 1px solid #000
+    cursor: pointer
+    +rounded(12px)
+    h3
+      display: inline
+    p
+      font-size: 0.8em
+      display: inline
+  li.avail_true
+    border: 2px solid rgb(52,156,0)
+    +gradient(#00FF27, #00FF27 - #555)
+  li.avail_false
+    border: 2px solid rgb(209,8,8)
+    +gradient(#FF0010, #FF0010 - #555)
+
+
+.whois_box    
+  +gradient(#FFF, #AAA)
+  +rounded(20px)
+  color: #222
+  padding: 8px 15px
+  //margin: 15px 20px
+
+#results li .whois_box p 
+  display: block
+  
+
+p 
+  font-size: 0.9em
+  
+h1 
+  margin-bottom: 5px
+  font-size: 1.5em
+  span
+    font-size: 0.55em
+    display: block
+    
+    
+$input_padding_vert:  6px
+$input_padding_horiz: 10px 
+
+input, button
+  font-size: 1.3em
+  +background-image(linear-gradient(#4C4E55, #93948E))
+  color: #FFF
+  padding: $input_padding_vert $input_padding_horiz
+  +border-radius(13px)
+  border: 2px solid $dark_grey
+  +box-shadow-mk(1px, 2px, 3px, #777)
+  &:focus
+    +box-shadow-mk(1px, 2px, 5px, #222)
+
+
+  
+section, form
+  display: block
+  width: 100%
+  margin-right: 20px
+
+$margin_right: (100% - $inner_width) / 1.7
+
+input.domain
+  width: 100% - $margin_right
+  
+input[type=submit], button.refresh
+  +background-image(linear-gradient(darken(#93948E, 20%), darken(#4C4E55, 20%)))
+  color: $gold
+  cursor: pointer
+  font-weight: bold
+  text-shadow: 0px 0px 1px $gold
+  border: 2px solid $dark_grey
+  &:hover
+    +background-image(linear-gradient(darken(#4C4E55, 30%), darken(#93948E, 20%)))
+    color: lighten($gold, 20%)
+    text-shadow: 0px 0px 4px $gold
+  &:active
+    +background-image(linear-gradient(darken(#4C4E55, 50%), darken(#93948E, 40%)))
+    border-color: $gold
+
+input[type=submit]
+  right: $margin_right - 0.5%
+  padding: 0 $input_padding_horiz*2 0
+  position: absolute
+  font-size: 1.8em
+  
+.ios input[type=submit]
+  font-size: 1.6em
+
+input#prefs
+  font-size: 1.08em
+  padding: 2px 2px
+  width: 2.0em
+
+#src, header
+  -webkit-animation-name: changeScale
+  -webkit-transition: all 0.5s ease-in-out
+
+.search
+  display: none
+
+#details
+  opacity: 0
+  display: none
+  position: absolute
+  padding: 20px 5%
+  width: 90%
+  -webkit-transition: opacity 0.8s ease-in-out
+  .cont
+    display: block
+    color: #222
+
+#details.open
+  display: block
+
+#details.close
+  opacity: 0
+
+button.refresh
+  float: right
+  width: 35px
+  height: 35px
+  margin: 10px
+  font-size: 0.9em
+  padding: 0
+  
+  
+.standalone_gradient
+  height: 0px
+  color: #FFF
+
+@media (max-width:480px)
+
+@media (orientation: portrait)

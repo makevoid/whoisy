@@ -32,7 +32,7 @@ function do_search() {
   //console.log(data)
   //$("#spinner").show("fast")
   //$("#results").fadeOut("fast")
-  $("#results").html('<img class="spinner" src="/images/spinner.gif">')
+  $("#results").html('<img class="spinner" src="/imgs/spinner.gif">')
   
   if (ui_animated) 
     search_animation()  
