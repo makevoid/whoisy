@@ -90,7 +90,7 @@ a:hover
   color: $links + #111
 
 
-input[type='submit'], input.submit, a.button
+// input[type='submit'], input.submit, a.button
 
 
 .spinner
@@ -100,7 +100,6 @@ input[type='submit'], input.submit, a.button
   margin-bottom: 30px
   
 $inner_width: 93%
-
 
 // colors
 
@@ -126,19 +125,50 @@ header
   
 #content
   margin: 20px auto
+  
+section.search
   width: $inner_width
+  margin: 0 auto 20px
+
+#plate_top
+  +background-image(linear-gradient(lighten($dark_grey, 30%), darken($dark_grey, 10%)))
+  height: 30px
   
-  
+#plate_bottom
+  +background-image(linear-gradient(darken($dark_grey, 0%), darken($dark_grey, 20%)))
+  height: 200px
+  position: absolute
+  width: 100%
+  top: 0
+
 #results
-  margin-top: 15px
+  position: relative
+  // height: 0
+
+#plate
+  font-size: 2.5em
+  margin: 0px auto
+  width: 100px
+  font-family: Times New Roman, Times
+  color: darken($dark_grey, 25%)
+  font-weight: bold
+  span
+    font-size: 0.5em
+    position: relative
+    left: -30px
+    color: $gold
+
+#results
+  padding-top: 20px
+  // +background-image(linear-gradient(lighten($dark_grey, 50%), lighten($dark_grey, 10%)))
   li
     display: block
-    width: 75%
-    padding: 5px
-    margin: 10px 0
+    padding: 5px 10px
+    margin: 0 10px 20px
     border: 1px solid #000
     cursor: pointer
     +rounded(12px)
+    +background-image(linear-gradient(lighten($dark_grey, 50%), lighten($dark_grey, 10%)))
     h3
       display: inline
     p
@@ -146,11 +176,15 @@ header
       display: inline
   li.avail_true
     border: 2px solid rgb(52,156,0)
-    +gradient(#00FF27, #00FF27 - #555)
+    +background-image(linear-gradient(#00FF27, #00FF27 - #555))
+    &:hover
+      +background-image(linear-gradient(darken(#00FF27, 20%), #00FF27 - #555))
+      
   li.avail_false
     border: 2px solid rgb(209,8,8)
-    +gradient(#FF0010, #FF0010 - #555)
-
+    +background-image(linear-gradient(#FF0010, #FF0010 - #555))
+    &:hover
+      +background-image(linear-gradient(darken(#FF0010, 20%), #FF0010 - #555))
 
 .whois_box    
   +gradient(#FFF, #AAA)

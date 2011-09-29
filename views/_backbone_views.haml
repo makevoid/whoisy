@@ -1,10 +1,12 @@
 %script.results_view{ type: "text/haml" }
   :plain
+    results:
     %ul.results
     
 %script.result_view{ type: "text/haml" }
   :plain
-    %li result
+    %li{ class: "avail_\#{available}" }
+      \#{name}.\#{ext}
 
 
 %script#result_tmpl_old{ type: "text/x-moustache-tmpl" }

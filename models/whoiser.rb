@@ -31,7 +31,7 @@ class Whoiser
   
   
   def self.cached?(name, tlds)
-    domains = Domain.all(name: name, ext: tlds, :updated_at.lte => Time.now, :updated_at.gte => Time.now - 3600 ).count
+    domains = Domain.cacheds(name, tlds).count
     domains == tlds.size
   end
   

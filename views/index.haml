@@ -4,11 +4,14 @@
     %input.domain{ type: "text", name: "domain", value: params[:domain], autocorrect: "off", autocapitalize: "off" }
     /%input#prefs{ type: "submit", value: "\xE2\x97\x8E"}
 
-#results  
-  %ul
-    - unless @results.nil?
-      - @results.each do |it|
-        = partial(:_whois, it)
+#plate_top
+#results
+  -#  %ul
+  -#    - unless @results.nil?
+  -#      - @results.each do |it|
+  -#        = partial(:_whois, it)
+  #plate_bottom
 
-  #plate
-    W ★
+    #plate
+      W
+      %span ★

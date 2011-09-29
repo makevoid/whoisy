@@ -127,7 +127,7 @@ a:hover {
   margin-bottom: 30px;
 }
 
-/* line 112, ../../sass/whoisy.sass */
+/* line 111, ../../sass/whoisy.sass */
 header {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff9cc), color-stop(50%, #ffe100), color-stop(100%, #bb8e00));
   background-image: -webkit-linear-gradient(#fff9cc, #ffe100, #bb8e00);
@@ -141,70 +141,149 @@ header {
   -webkit-box-shadow: 0 3px 3px #666666;
   box-shadow: 0 3px 3px #666666;
 }
-/* line 118, ../../sass/whoisy.sass */
+/* line 117, ../../sass/whoisy.sass */
 header .inner {
   width: 93%;
   margin: 0 auto;
   padding: 4px 0;
 }
-/* line 122, ../../sass/whoisy.sass */
+/* line 121, ../../sass/whoisy.sass */
 header .inner a {
   color: black;
 }
-/* line 124, ../../sass/whoisy.sass */
+/* line 123, ../../sass/whoisy.sass */
 header .inner a:hover {
   color: #4d4d4d;
 }
 
-/* line 127, ../../sass/whoisy.sass */
+/* line 126, ../../sass/whoisy.sass */
 #content {
   margin: 20px auto;
-  width: 93%;
 }
 
-/* line 132, ../../sass/whoisy.sass */
-#results {
-  margin-top: 15px;
+/* line 129, ../../sass/whoisy.sass */
+section.search {
+  width: 93%;
+  margin: 0 auto 20px;
 }
-/* line 134, ../../sass/whoisy.sass */
+
+/* line 133, ../../sass/whoisy.sass */
+#plate_top {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b3b3b3), color-stop(100%, #4d4d4d));
+  background-image: -webkit-linear-gradient(#b3b3b3, #4d4d4d);
+  background-image: -moz-linear-gradient(#b3b3b3, #4d4d4d);
+  background-image: -o-linear-gradient(#b3b3b3, #4d4d4d);
+  background-image: -ms-linear-gradient(#b3b3b3, #4d4d4d);
+  background-image: linear-gradient(#b3b3b3, #4d4d4d);
+  height: 30px;
+}
+
+/* line 137, ../../sass/whoisy.sass */
+#plate_bottom {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #666666), color-stop(100%, #333333));
+  background-image: -webkit-linear-gradient(#666666, #333333);
+  background-image: -moz-linear-gradient(#666666, #333333);
+  background-image: -o-linear-gradient(#666666, #333333);
+  background-image: -ms-linear-gradient(#666666, #333333);
+  background-image: linear-gradient(#666666, #333333);
+  height: 200px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+/* line 144, ../../sass/whoisy.sass */
+#results {
+  position: relative;
+}
+
+/* line 148, ../../sass/whoisy.sass */
+#plate {
+  font-size: 2.5em;
+  margin: 0px auto;
+  width: 100px;
+  font-family: Times New Roman, Times;
+  color: #262626;
+  font-weight: bold;
+}
+/* line 155, ../../sass/whoisy.sass */
+#plate span {
+  font-size: 0.5em;
+  position: relative;
+  left: -30px;
+  color: #ffe100;
+}
+
+/* line 161, ../../sass/whoisy.sass */
+#results {
+  padding-top: 20px;
+}
+/* line 164, ../../sass/whoisy.sass */
 #results li {
   display: block;
-  width: 75%;
-  padding: 5px;
-  margin: 10px 0;
+  padding: 5px 10px;
+  margin: 0 10px 20px;
   border: 1px solid black;
   cursor: pointer;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
   border-radius: 12px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e6e6e6), color-stop(100%, #808080));
+  background-image: -webkit-linear-gradient(#e6e6e6, #808080);
+  background-image: -moz-linear-gradient(#e6e6e6, #808080);
+  background-image: -o-linear-gradient(#e6e6e6, #808080);
+  background-image: -ms-linear-gradient(#e6e6e6, #808080);
+  background-image: linear-gradient(#e6e6e6, #808080);
 }
-/* line 142, ../../sass/whoisy.sass */
+/* line 172, ../../sass/whoisy.sass */
 #results li h3 {
   display: inline;
 }
-/* line 144, ../../sass/whoisy.sass */
+/* line 174, ../../sass/whoisy.sass */
 #results li p {
   font-size: 0.8em;
   display: inline;
 }
-/* line 147, ../../sass/whoisy.sass */
+/* line 177, ../../sass/whoisy.sass */
 #results li.avail_true {
   border: 2px solid #349c00;
-  background-color: #00aa00;
-  background: -webkit-gradient(linear, left top, left bottom, from(#00ff27), to(#00aa00));
-  background: -moz-linear-gradient(top, #00ff27, #00aa00);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ff27', endColorstr='#00aa00');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00ff27), color-stop(100%, #00aa00));
+  background-image: -webkit-linear-gradient(#00ff27, #00aa00);
+  background-image: -moz-linear-gradient(#00ff27, #00aa00);
+  background-image: -o-linear-gradient(#00ff27, #00aa00);
+  background-image: -ms-linear-gradient(#00ff27, #00aa00);
+  background-image: linear-gradient(#00ff27, #00aa00);
 }
-/* line 150, ../../sass/whoisy.sass */
+/* line 180, ../../sass/whoisy.sass */
+#results li.avail_true:hover {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #009917), color-stop(100%, #00aa00));
+  background-image: -webkit-linear-gradient(#009917, #00aa00);
+  background-image: -moz-linear-gradient(#009917, #00aa00);
+  background-image: -o-linear-gradient(#009917, #00aa00);
+  background-image: -ms-linear-gradient(#009917, #00aa00);
+  background-image: linear-gradient(#009917, #00aa00);
+}
+/* line 183, ../../sass/whoisy.sass */
 #results li.avail_false {
   border: 2px solid #d10808;
-  background-color: #aa0000;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ff0010), to(#aa0000));
-  background: -moz-linear-gradient(top, #ff0010, #aa0000);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0010', endColorstr='#aa0000');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0010), color-stop(100%, #aa0000));
+  background-image: -webkit-linear-gradient(#ff0010, #aa0000);
+  background-image: -moz-linear-gradient(#ff0010, #aa0000);
+  background-image: -o-linear-gradient(#ff0010, #aa0000);
+  background-image: -ms-linear-gradient(#ff0010, #aa0000);
+  background-image: linear-gradient(#ff0010, #aa0000);
+}
+/* line 186, ../../sass/whoisy.sass */
+#results li.avail_false:hover {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #99000a), color-stop(100%, #aa0000));
+  background-image: -webkit-linear-gradient(#99000a, #aa0000);
+  background-image: -moz-linear-gradient(#99000a, #aa0000);
+  background-image: -o-linear-gradient(#99000a, #aa0000);
+  background-image: -ms-linear-gradient(#99000a, #aa0000);
+  background-image: linear-gradient(#99000a, #aa0000);
 }
 
-/* line 155, ../../sass/whoisy.sass */
+/* line 189, ../../sass/whoisy.sass */
 .whois_box {
   background-color: #aaaaaa;
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(#aaaaaa));
@@ -217,28 +296,28 @@ header .inner a:hover {
   padding: 8px 15px;
 }
 
-/* line 162, ../../sass/whoisy.sass */
+/* line 196, ../../sass/whoisy.sass */
 #results li .whois_box p {
   display: block;
 }
 
-/* line 166, ../../sass/whoisy.sass */
+/* line 200, ../../sass/whoisy.sass */
 p {
   font-size: 0.9em;
 }
 
-/* line 169, ../../sass/whoisy.sass */
+/* line 203, ../../sass/whoisy.sass */
 h1 {
   margin-bottom: 5px;
   font-size: 1.5em;
 }
-/* line 172, ../../sass/whoisy.sass */
+/* line 206, ../../sass/whoisy.sass */
 h1 span {
   font-size: 0.55em;
   display: block;
 }
 
-/* line 180, ../../sass/whoisy.sass */
+/* line 214, ../../sass/whoisy.sass */
 input, button {
   font-size: 1.3em;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4c4e55), color-stop(100%, #93948e));
@@ -260,26 +339,26 @@ input, button {
   -webkit-box-shadow: 1px 2px 3px #777777;
   box-shadow: 1px 2px 3px #777777;
 }
-/* line 188, ../../sass/whoisy.sass */
+/* line 222, ../../sass/whoisy.sass */
 input:focus, button:focus {
   -moz-box-shadow: 1px 2px 5px #222222;
   -webkit-box-shadow: 1px 2px 5px #222222;
   box-shadow: 1px 2px 5px #222222;
 }
 
-/* line 193, ../../sass/whoisy.sass */
+/* line 227, ../../sass/whoisy.sass */
 section, form {
   display: block;
   width: 100%;
   margin-right: 20px;
 }
 
-/* line 200, ../../sass/whoisy.sass */
+/* line 234, ../../sass/whoisy.sass */
 input.domain {
   width: 95.882%;
 }
 
-/* line 203, ../../sass/whoisy.sass */
+/* line 237, ../../sass/whoisy.sass */
 input[type=submit], button.refresh {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #60615b), color-stop(100%, #1c1d1f));
   background-image: -webkit-linear-gradient(#60615b, #1c1d1f);
@@ -293,7 +372,7 @@ input[type=submit], button.refresh {
   text-shadow: 0px 0px 1px #ffe100;
   border: 2px solid #666666;
 }
-/* line 210, ../../sass/whoisy.sass */
+/* line 244, ../../sass/whoisy.sass */
 input[type=submit]:hover, button.refresh:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #040404), color-stop(100%, #60615b));
   background-image: -webkit-linear-gradient(#040404, #60615b);
@@ -304,7 +383,7 @@ input[type=submit]:hover, button.refresh:hover {
   color: #ffed66;
   text-shadow: 0px 0px 4px #ffe100;
 }
-/* line 214, ../../sass/whoisy.sass */
+/* line 248, ../../sass/whoisy.sass */
 input[type=submit]:active, button.refresh:active {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #2c2c2a));
   background-image: -webkit-linear-gradient(#000000, #2c2c2a);
@@ -315,7 +394,7 @@ input[type=submit]:active, button.refresh:active {
   border-color: #ffe100;
 }
 
-/* line 218, ../../sass/whoisy.sass */
+/* line 252, ../../sass/whoisy.sass */
 input[type=submit] {
   right: 3.618%;
   padding: 0 20px 0;
@@ -323,30 +402,30 @@ input[type=submit] {
   font-size: 1.8em;
 }
 
-/* line 224, ../../sass/whoisy.sass */
+/* line 258, ../../sass/whoisy.sass */
 .ios input[type=submit] {
   font-size: 1.6em;
 }
 
-/* line 227, ../../sass/whoisy.sass */
+/* line 261, ../../sass/whoisy.sass */
 input#prefs {
   font-size: 1.08em;
   padding: 2px 2px;
   width: 2em;
 }
 
-/* line 232, ../../sass/whoisy.sass */
+/* line 266, ../../sass/whoisy.sass */
 #src, header {
   -webkit-animation-name: changeScale;
   -webkit-transition: all 0.5s ease-in-out;
 }
 
-/* line 236, ../../sass/whoisy.sass */
+/* line 270, ../../sass/whoisy.sass */
 .search {
   display: none;
 }
 
-/* line 239, ../../sass/whoisy.sass */
+/* line 273, ../../sass/whoisy.sass */
 #details {
   opacity: 0;
   display: none;
@@ -355,23 +434,23 @@ input#prefs {
   width: 90%;
   -webkit-transition: opacity 0.8s ease-in-out;
 }
-/* line 246, ../../sass/whoisy.sass */
+/* line 280, ../../sass/whoisy.sass */
 #details .cont {
   display: block;
   color: #222222;
 }
 
-/* line 250, ../../sass/whoisy.sass */
+/* line 284, ../../sass/whoisy.sass */
 #details.open {
   display: block;
 }
 
-/* line 253, ../../sass/whoisy.sass */
+/* line 287, ../../sass/whoisy.sass */
 #details.close {
   opacity: 0;
 }
 
-/* line 256, ../../sass/whoisy.sass */
+/* line 290, ../../sass/whoisy.sass */
 button.refresh {
   float: right;
   width: 35px;
@@ -381,7 +460,7 @@ button.refresh {
   padding: 0;
 }
 
-/* line 265, ../../sass/whoisy.sass */
+/* line 299, ../../sass/whoisy.sass */
 .standalone_gradient {
   height: 0px;
   color: white;

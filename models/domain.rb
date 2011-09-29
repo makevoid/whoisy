@@ -13,6 +13,9 @@ class Domain
     self.whois_count = self.whois_count+1
   end
   
-  
   has 1, :user, { through: :domain_user }
+  
+  def self.cacheds(name, tlds=Tld.all)
+    all(name: name, ext: tlds, :updated_at.lte => Time.now, :updated_at.gte => Time.now - 3600 )
+  end
 end

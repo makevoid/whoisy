@@ -43,10 +43,8 @@
     function ResultView() {
       ResultView.__super__.constructor.apply(this, arguments);
     }
-    ResultView.prototype.className = "result_view";
     ResultView.prototype.initialize = function(opts) {
       this.model = opts["model"];
-      console.log("view model:", this.model);
       return this.model.bind("change", this.gotResult, this);
     };
     ResultView.prototype.gotResult = function() {
@@ -55,11 +53,11 @@
     };
     ResultView.prototype.render = function() {
       var cont, content, haml;
-      console.log("render model");
-      cont = $("." + this.className).html();
+      cont = $(".result_view").html();
       haml = Haml(cont);
       content = haml(this.model.attributes);
-      return content;
+      $(this.el).html(content);
+      return this;
     };
     return ResultView;
   })();
@@ -68,31 +66,42 @@
     function ResultsView() {
       ResultsView.__super__.constructor.apply(this, arguments);
     }
-    ResultsView.prototype.className = "results_view";
     ResultsView.prototype.element = ".results";
     ResultsView.prototype.initialize = function(opts) {
       this.model = opts["model"];
       window.deb = this.model;
-      console.log("opt: ", this.model);
       return this.model.bind("change", this.render, this);
     };
     ResultsView.prototype.render = function() {
       var content, result, result_attrs, view, _i, _len, _ref, _results;
-      console.log("render");
+      console.log("render", this.model.attributes.results);
       _ref = this.model.attributes.results;
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         result_attrs = _ref[_i];
+        console.log("attrs: ", result_attrs);
         result = new Result(result_attrs);
-        console.log(result);
         view = new ResultView({
           model: result
         });
         content = view.render().el;
-        console.log("content: ", content);
-        _results.push(this.$(this.element).append(content));
+        $(this.el).append(content);
+        $("#results").prepend(this.el);
+        _results.push(this.open());
       }
       return _results;
+    };
+    ResultsView.prototype.open = function() {
+      var height;
+      height = "300px";
+      return $("#plate_bottom").anim({
+        top: height
+      });
+    };
+    ResultsView.prototype.close = function() {
+      return $("#plate_bottom").anim({
+        top: 0
+      });
     };
     return ResultsView;
   })();
@@ -101,19 +110,7 @@
     function Whoisy() {
       Whoisy.__super__.constructor.apply(this, arguments);
     }
-    Whoisy.prototype.initialize = function() {
-      var resultsView;
-      this.results_list = new ResultsList();
-      window.results_list = this.results;
-      this.results = new Results({
-        id: "makevoid.com"
-      });
-      this.results_list.add([this.results]);
-      resultsView = new ResultsView({
-        model: this.results
-      });
-      return this.results.fetch();
-    };
+    Whoisy.prototype.initialize = function() {};
     Whoisy.prototype.initSearch = function() {
       return $(function() {
         return $("#search").bind("submit", function() {
@@ -122,7 +119,17 @@
       });
     };
     Whoisy.prototype.query = function(domain) {
-      return this.result.fetch(domain);
+      var resultsView;
+      this.results_list = new ResultsList();
+      window.results_list = this.results;
+      this.results = new Results({
+        id: domain
+      });
+      this.results_list.add([this.results]);
+      resultsView = new ResultsView({
+        model: this.results
+      });
+      return this.results.fetch();
     };
     return Whoisy;
   })();
