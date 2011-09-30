@@ -27,6 +27,20 @@
     function Results() {
       Results.__super__.constructor.apply(this, arguments);
     }
+    Results.prototype.initialize = function() {
+      return this.bind("change", this.results, this);
+    };
+    Results.prototype.results = function() {
+      console.log("asd", this.attributes);
+      if (this.attributes.error) {
+        return this.gotError(this.attributes.error);
+      } else {
+        return this.trigger("gotResult");
+      }
+    };
+    Results.prototype.gotError = function(error) {
+      return console.log("got Error: ", error);
+    };
     return Results;
   })();
   ResultsList = (function() {
@@ -45,9 +59,9 @@
     }
     ResultView.prototype.initialize = function(opts) {
       this.model = opts["model"];
-      return this.model.bind("change", this.gotResult, this);
+      return this.model.bind("change", this.resetAndRender, this);
     };
-    ResultView.prototype.gotResult = function() {
+    ResultView.prototype.resetAndRender = function() {
       window.results_list.trigger("reset");
       return this.render();
     };
@@ -70,7 +84,7 @@
     ResultsView.prototype.initialize = function(opts) {
       this.model = opts["model"];
       window.deb = this.model;
-      return this.model.bind("change", this.render, this);
+      return this.model.bind("gotResult", this.render, this);
     };
     ResultsView.prototype.render = function() {
       var content, result, result_attrs, view, _i, _len, _ref, _results;
@@ -110,7 +124,9 @@
     function Whoisy() {
       Whoisy.__super__.constructor.apply(this, arguments);
     }
-    Whoisy.prototype.initialize = function() {};
+    Whoisy.prototype.initialize = function() {
+      return $(function() {});
+    };
     Whoisy.prototype.initSearch = function() {
       return $(function() {
         return $("#search").bind("submit", function() {

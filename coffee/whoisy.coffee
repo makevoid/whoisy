@@ -3,10 +3,20 @@ class Domain extends Backbone.Model
   
 class Result extends Backbone.Model
   
-
 # mollection
 class Results extends Backbone.Model
-  
+  initialize: ->
+    this.bind("change", this.results, this)
+    
+  results: ->
+    console.log "asd", this.attributes
+    if (this.attributes.error)
+      this.gotError(this.attributes.error)
+    else
+      this.trigger("gotResult")
+
+  gotError: (error) ->
+    console.log "got Error: ", error
     
 # collections
 class ResultsList extends Backbone.Collection
@@ -19,9 +29,9 @@ class ResultView extends Backbone.View
 
   initialize: (opts) ->
     @model = opts["model"]
-    @model.bind("change", this.gotResult, this)
+    @model.bind("change", this.resetAndRender, this)
 
-  gotResult: ->
+  resetAndRender: ->
     window.results_list.trigger("reset")
     this.render()
 
@@ -40,7 +50,7 @@ class ResultsView extends Backbone.View
     # console.log @collection
     @model = opts["model"]
     window.deb = @model
-    @model.bind("change", this.render, this)
+    @model.bind("gotResult", this.render, this)
     
   render: ->
     console.log "render", @model.attributes.results
@@ -65,7 +75,10 @@ class ResultsView extends Backbone.View
 # controller
 class Whoisy extends Backbone.Router
   initialize: ->
-    # this.query("makevoid.com")
+    $( ->
+      # window.whoisy.query("makevoid.com")
+      # window.whoisy.query("mkvd.net")  
+    )
     
   initSearch: ->
     $( -> 
