@@ -14,7 +14,7 @@ if env == "production"
   user = "root:#{pass}@" 
 end
 
-DataMapper.setup :default, "mysql://#{user}localhost/handsonxp_#{env}"
+DataMapper.setup :default, "mysql://#{user}localhost/whoisy_#{env}"
 
 
 # DataMapper::Model.raise_on_save_failure = true 
