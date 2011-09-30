@@ -7,7 +7,7 @@ Bundler.require :models
 # require 'dm-sqlite-adapter'
 # 
 # DataMapper.setup :default, "sqlite://#{APP_PATH}/db/app.sqlite"
-DataMapper.setup :default, "mysql://localhost/whoisy_#{ENV["RACK_ENV"] || "development"}"
+DataMapper.setup :default, "mysql://#{"root:final33man" if ENV["RACK_ENV" ]=="production"}localhost/whoisy_#{ENV["RACK_ENV"] || "development"}"
 # DataMapper::Model.raise_on_save_failure = true 
 # 
 # 
