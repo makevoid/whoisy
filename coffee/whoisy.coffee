@@ -51,26 +51,40 @@ class ResultsView extends Backbone.View
     @model = opts["model"]
     window.deb = @model
     @model.bind("gotResult", this.render, this)
+    @is_open = false
     
   render: ->
     console.log "render", @model.attributes.results
+    $(@el).html("")
+    $(".results_list div").remove()
     for result_attrs in @model.attributes.results
-      console.log "attrs: ", result_attrs
       result = new Result(result_attrs)
       view = new ResultView(model: result)
       content = view.render().el
+
       $(@el).append content
-      $("#results").prepend @el
+      
+      $(".results_list").prepend @el
       # FIXME: hardcoded height
-      # height = $("#results").height()
-      this.open()
+      # height = $(".results_list").height()
+    
+      if @is_open
+        this.close(this.open) 
+      else
+        this.open()
   
   open: ->
-    height = "300px"
-    $("#plate_bottom").anim({ top: height })
+    height = $("body").height() - 300
+    $("#plate_bottom").anim({ top: "#{height}px" })
+    @is_open = true
     
-  close: ->
-    $("#plate_bottom").anim({ top: 0 })
+  close: (return_callback) ->
+    # also remove results
+    callback = ->
+      return_callback()
+    #                                   opacity, duration
+    $("#plate_bottom").anim({ top: 0 }, undefined, undefined, callback)
+
 
 # controller
 class Whoisy extends Backbone.Router
@@ -106,6 +120,11 @@ whoisy.initSearch()
 
 
 $( -> 
+  $("body").bind("touchmove", (evt) ->
+    evt.preventDefault()
+  )
+  
+
   $("button.refresh").bind("click", ->
     document.location = "/"
   )
@@ -116,6 +135,8 @@ $( ->
     $("body").addClass "ios"
   else
     $("input.domain").focus()
+  
+  $("#plate_bottom").height($("body").height() - 170)
   
   # $("#container").append $("html").attr('class')
 )

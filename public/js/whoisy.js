@@ -84,38 +84,45 @@
     ResultsView.prototype.initialize = function(opts) {
       this.model = opts["model"];
       window.deb = this.model;
-      return this.model.bind("gotResult", this.render, this);
+      this.model.bind("gotResult", this.render, this);
+      return this.is_open = false;
     };
     ResultsView.prototype.render = function() {
       var content, result, result_attrs, view, _i, _len, _ref, _results;
       console.log("render", this.model.attributes.results);
+      $(this.el).html("");
+      $(".results_list div").remove();
       _ref = this.model.attributes.results;
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         result_attrs = _ref[_i];
-        console.log("attrs: ", result_attrs);
         result = new Result(result_attrs);
         view = new ResultView({
           model: result
         });
         content = view.render().el;
         $(this.el).append(content);
-        $("#results").prepend(this.el);
-        _results.push(this.open());
+        $(".results_list").prepend(this.el);
+        _results.push(this.is_open ? this.close(this.open) : this.open());
       }
       return _results;
     };
     ResultsView.prototype.open = function() {
       var height;
-      height = "300px";
-      return $("#plate_bottom").anim({
-        top: height
+      height = $("body").height() - 300;
+      $("#plate_bottom").anim({
+        top: "" + height + "px"
       });
+      return this.is_open = true;
     };
-    ResultsView.prototype.close = function() {
+    ResultsView.prototype.close = function(return_callback) {
+      var callback;
+      callback = function() {
+        return return_callback();
+      };
       return $("#plate_bottom").anim({
         top: 0
-      });
+      }, void 0, void 0, callback);
     };
     return ResultsView;
   })();
@@ -153,14 +160,18 @@
   g.whoisy = new Whoisy;
   whoisy.initSearch();
   $(function() {
+    $("body").bind("touchmove", function(evt) {
+      return evt.preventDefault();
+    });
     $("button.refresh").bind("click", function() {
       return document.location = "/";
     });
     $(".search").fadeIn('slow');
     if ($.os.ios) {
-      return $("body").addClass("ios");
+      $("body").addClass("ios");
     } else {
-      return $("input.domain").focus();
+      $("input.domain").focus();
     }
+    return $("#plate_bottom").height($("body").height() - 170);
   });
 }).call(this);
