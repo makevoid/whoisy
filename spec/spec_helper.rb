@@ -1,6 +1,6 @@
 
 path = File.expand_path "../../", __FILE__
-require "#{path}/whoisy.rb"
+require "#{path}/config/env"
 
 require 'webrat'
 require 'rspec'

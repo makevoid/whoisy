@@ -1,8 +1,6 @@
 path = File.expand_path "../../", __FILE__
-ENV["RACK_ENV"] = ARGV[0]
+ENV["RACK_ENV"] = ARGV[0] || "development"
 APP_PATH = path 
-
-
 
 require "#{path}/config/env"
 

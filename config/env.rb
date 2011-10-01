@@ -24,7 +24,6 @@ DataMapper.setup :default, "mysql://#{user}localhost/whoisy_#{env}"
 #   require model
 # end
 
-require "#{path}/lib/mhash"
 Dir.glob("#{path}/models/*.rb").each do |model|
   require model
 end

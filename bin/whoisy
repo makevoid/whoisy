@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+path = File.expand_path "../../", __FILE__
+
+# require 'whoisy' # from gem
+require "#{path}/models/whoiser"
+
+module Whoisy
+  class Cli
+    def help
+      puts "
+  USAGE:
+  
+    whois domain
+  
+      "
+    end
+  end
+end
+
+Cli.new
+
+whois = Whoiser.whois ARGV[0]
+puts whois.to_s
