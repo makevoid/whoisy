@@ -17,11 +17,11 @@
     %script{ src: "/js/vendor/zepto.js", type: "text/javascript" }
   %body{ class: body_class }  
     #container
-      .standalone_gradient
+      .standalone_loader
       :javascript
         $(function(){
           if (window.navigator.standalone)
-            $(".standalone_gradient").anim({height: "22px"})
+            $(".standalone_loader").anim({height: "22px"})
             //$(".standalone_gradient").show("fast")
         })
       %header

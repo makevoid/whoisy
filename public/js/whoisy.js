@@ -1,5 +1,5 @@
 (function() {
-  var Domain, Result, ResultView, Results, ResultsList, ResultsView, Whoisy, g;
+  var Domain, LoaderView, Result, ResultView, Results, ResultsList, ResultsView, Whoisy, g;
   var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
     for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
     function ctor() { this.constructor = child; }
@@ -31,7 +31,6 @@
       return this.bind("change", this.results, this);
     };
     Results.prototype.results = function() {
-      console.log("asd", this.attributes);
       if (this.attributes.error) {
         return this.gotError(this.attributes.error);
       } else {
@@ -51,6 +50,16 @@
     ResultsList.prototype.model = Result;
     ResultsList.prototype.url = "/whois";
     return ResultsList;
+  })();
+  LoaderView = (function() {
+    __extends(LoaderView, Backbone.View);
+    function LoaderView() {
+      LoaderView.__super__.constructor.apply(this, arguments);
+    }
+    LoaderView.prototype.element = ".standalone_loader";
+    LoaderView.prototype.load = function() {};
+    LoaderView.prototype.loaded = function() {};
+    return LoaderView;
   })();
   ResultView = (function() {
     __extends(ResultView, Backbone.View);
@@ -89,7 +98,7 @@
     };
     ResultsView.prototype.render = function() {
       var content, result, result_attrs, view, _i, _len, _ref, _results;
-      console.log("render", this.model.attributes.results);
+      window.loader.loaded();
       $(this.el).html("");
       $(".results_list div").remove();
       _ref = this.model.attributes.results;
@@ -103,26 +112,23 @@
         content = view.render().el;
         $(this.el).append(content);
         $(".results_list").prepend(this.el);
-        _results.push(this.is_open ? this.close(this.open) : this.open());
+        _results.push(this.open());
       }
       return _results;
     };
     ResultsView.prototype.open = function() {
       var height;
       height = $("body").height() - 300;
+      height = $(".results_list").height() + 20 * 2.5;
       $("#plate_bottom").anim({
         top: "" + height + "px"
       });
       return this.is_open = true;
     };
-    ResultsView.prototype.close = function(return_callback) {
-      var callback;
-      callback = function() {
-        return return_callback();
-      };
+    ResultsView.prototype.close = function() {
       return $("#plate_bottom").anim({
         top: 0
-      }, void 0, void 0, callback);
+      });
     };
     return ResultsView;
   })();
@@ -132,7 +138,8 @@
       Whoisy.__super__.constructor.apply(this, arguments);
     }
     Whoisy.prototype.initialize = function() {
-      return $(function() {});
+      $(function() {});
+      return window.loader = new LoaderView();
     };
     Whoisy.prototype.initSearch = function() {
       return $(function() {
@@ -152,7 +159,9 @@
       resultsView = new ResultsView({
         model: this.results
       });
-      return this.results.fetch();
+      resultsView.close();
+      this.results.fetch();
+      return window.loader.load();
     };
     return Whoisy;
   })();
@@ -160,6 +169,7 @@
   g.whoisy = new Whoisy;
   whoisy.initSearch();
   $(function() {
+    var height;
     $("body").bind("touchmove", function(evt) {
       return evt.preventDefault();
     });
@@ -172,6 +182,7 @@
     } else {
       $("input.domain").focus();
     }
-    return $("#plate_bottom").height($("body").height() - 170);
+    height = $(".results_list").height() + 20;
+    return $("#plate_bottom").height($("body").height() - height);
   });
 }).call(this);

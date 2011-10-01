@@ -9,7 +9,6 @@ class Results extends Backbone.Model
     this.bind("change", this.results, this)
     
   results: ->
-    console.log "asd", this.attributes
     if (this.attributes.error)
       this.gotError(this.attributes.error)
     else
@@ -25,6 +24,17 @@ class ResultsList extends Backbone.Collection
 
   
 # views
+class LoaderView extends Backbone.View
+  element: ".standalone_loader"
+  # TODO: horizontal loader
+  
+  load: ->
+    # $(@element).anim(backgroundColor: "#000000")
+    
+  loaded: ->
+    # $(@element).anim(backgroundColor: "#FFE100")
+    
+
 class ResultView extends Backbone.View
 
   initialize: (opts) ->
@@ -54,7 +64,8 @@ class ResultsView extends Backbone.View
     @is_open = false
     
   render: ->
-    console.log "render", @model.attributes.results
+    window.loader.loaded()
+    # console.log "render", @model.attributes.results
     $(@el).html("")
     $(".results_list div").remove()
     for result_attrs in @model.attributes.results
@@ -68,22 +79,16 @@ class ResultsView extends Backbone.View
       # FIXME: hardcoded height
       # height = $(".results_list").height()
     
-      if @is_open
-        this.close(this.open) 
-      else
-        this.open()
+      this.open()
   
   open: ->
-    height = $("body").height() - 300
+    height = $("body").height() - 300 # height_1
+    height = $(".results_list").height() + 20*2.5 # height_2
     $("#plate_bottom").anim({ top: "#{height}px" })
     @is_open = true
     
-  close: (return_callback) ->
-    # also remove results
-    callback = ->
-      return_callback()
-    #                                   opacity, duration
-    $("#plate_bottom").anim({ top: 0 }, undefined, undefined, callback)
+  close: ->
+    $("#plate_bottom").anim({ top: 0 })
 
 
 # controller
@@ -93,6 +98,7 @@ class Whoisy extends Backbone.Router
       # window.whoisy.query("makevoid.com")
       # window.whoisy.query("mkvd.net")  
     )
+    window.loader = new LoaderView()
     
   initSearch: ->
     $( -> 
@@ -107,7 +113,9 @@ class Whoisy extends Backbone.Router
     @results = new Results(id: domain)
     @results_list.add [@results]
     resultsView = new ResultsView( model: @results )
+    resultsView.close()
     @results.fetch()
+    window.loader.load()
  
 g = window 
 g.whoisy = new Whoisy
@@ -136,8 +144,9 @@ $( ->
   else
     $("input.domain").focus()
   
-  $("#plate_bottom").height($("body").height() - 170)
-  
+  # height = 170 # height_1
+  height = $(".results_list").height() + 20 # height_2
+  $("#plate_bottom").height $("body").height() - height
   # $("#container").append $("html").attr('class')
 )
 
