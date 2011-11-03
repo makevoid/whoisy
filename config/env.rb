@@ -18,11 +18,7 @@ DataMapper.setup :default, "mysql://#{user}localhost/whoisy_#{env}"
 
 
 # DataMapper::Model.raise_on_save_failure = true 
-# 
-# 
-# Dir.glob("#{APP_PATH}/models/*").each do |model|
-#   require model
-# end
+
 
 Dir.glob("#{path}/models/*.rb").each do |model|
   require model

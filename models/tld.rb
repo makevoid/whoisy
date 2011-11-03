@@ -1,7 +1,8 @@
 class Tld
   
   # TLDS = ["com", "net", "org", "it", "co.uk"]
-  TLDS = ["com", "it"]
+  TLDS = ["com", "net", "org", "it"]
+  # TLDS = ["com", "it"]
   
   def self.all
     TLDS

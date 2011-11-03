@@ -17,17 +17,9 @@ class Whoisy < Sinatra::Base
   require "#{APP_PATH}/config/env"
   include Voidtools::Sinatra::ViewHelpers
 
-  
-  set :haml, { :format => :html5 }
-  require 'rack-flash'
-  enable :sessions
-  use Rack::Flash
-  require 'sinatra/content_for'
+  require "#{APP_PATH}/config/sinatra_env"
   helpers Sinatra::ContentFor
-  set :method_override, true
   
-
-
   require "#{APP_PATH}/lib/view_helpers"
   helpers ViewHelpers
 
@@ -38,7 +30,6 @@ class Whoisy < Sinatra::Base
   get "/" do
     haml :index
   end
-  
   
   # Whois
   
