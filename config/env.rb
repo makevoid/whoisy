@@ -5,22 +5,24 @@ Bundler.require :models
 
 # require 'dm-core'
 # require 'dm-sqlite-adapter'
-# 
+#
 # DataMapper.setup :default, "sqlite://#{APP_PATH}/db/app.sqlite"
 
 env = ENV["RACK_ENV"]
 if env == "production"
   pass = File.read(File.expand_path "~/.password").strip
-  user = "root:#{pass}@" 
+  user = "root:#{pass}@"
 end
 
 DataMapper.setup :default, "mysql://#{user}localhost/whoisy_#{env}"
 
 
-# DataMapper::Model.raise_on_save_failure = true 
+# DataMapper::Model.raise_on_save_failure = true
 
 
 Dir.glob("#{path}/models/*.rb").each do |model|
   require model
 end
+DataMapper.finalize
+
 require 'voidtools'
