@@ -70,6 +70,8 @@ $txt: #FFF
 $main: #999
 $alt: #666
 $links: #EEE
+$default_fonts: Helvetica, sans-serif, Arial, Verdana
+$title_fonts: Times New Roman, Times, Courier New
 
 
 html
@@ -77,7 +79,7 @@ html
 
 body
   background: $bg
-  font-family: Helvetica, sans-serif, Arial, Verdana
+  font-family: $default_fonts
   color: $txt
   font-size: 120%
   +background-image(linear-gradient(#DFDEDA, #92949C))
@@ -150,10 +152,11 @@ section.search
   font-size: 2.5em
   margin: 0px auto
   width: 100px
-  font-family: Times New Roman, Times
+  font-family: $title_fonts
   color: darken($dark_grey, 25%)
   font-weight: bold
   span
+    font-family: $default_fonts
     font-size: 0.5em
     position: relative
     left: -30px
@@ -203,7 +206,8 @@ p
   
 h1 
   margin-bottom: 5px
-  font-size: 1.5em
+  font-size: 1.7em
+  font-family: $title_fonts
   span
     font-size: 0.55em
     display: block

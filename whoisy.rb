@@ -6,20 +6,18 @@ Bundler.require :default
 
 
 class Whoisy < Sinatra::Base
-  
+
   configure :development do
-    register Sinatra::Reloader
-    also_reload ["controllers/*.rb", "models/*.rb", "public/projects/*.haml"]
-    set :public, "public"
+    set :public_folder, "public"
     set :static, true
   end
-  
+
   require "#{APP_PATH}/config/env"
   include Voidtools::Sinatra::ViewHelpers
 
   require "#{APP_PATH}/config/sinatra_env"
   helpers Sinatra::ContentFor
-  
+
   require "#{APP_PATH}/lib/view_helpers"
   helpers ViewHelpers
 
@@ -30,34 +28,34 @@ class Whoisy < Sinatra::Base
   get "/" do
     haml :index
   end
-  
+
   # Whois
-  
+
   WHOISER = Whoiser.new
-    
-      
+
+
   def whois(domain)
-    WHOISER.whois domain 
+    WHOISER.whois domain
   end
-  
+
   def domain_tld
     Whoiser.tld domain_name
   end
-  
+
   def tld_given
     domain_name =~ /\./
   end
-  
+
   def tld_matches_if_given
     tld_given ? Tld.all.include?(domain_tld) : true
   end
-  
+
   def valid_domain?
     domain_name =~ /[a-z.]{3,}/ && tld_matches_if_given
   end
-  
+
   get "/tld.json" do
-    { results: Tld.all.map{ {tld: i} } }.to_json  
+    { results: Tld.all.map{ {tld: i} } }.to_json
   end
 
   get "/whois/:name/infos.json" do
@@ -66,27 +64,27 @@ class Whoisy < Sinatra::Base
     keys.each do |k|
       results[k] = R.hget params[:domain],k
     end
-    results.to_json 
+    results.to_json
   end
-  
-  
+
+
   def domain_name
     params[:domain].to_s.downcase
   end
-  
+
   get "/whois/:domain" do
     if valid_domain?
       domains = []
       results = whois domain_name
       results.each do |domain|
         domains << { name: domain.name, ext: domain.ext, available: domain.available }
-      end 
-      { results: domains }.to_json 
+      end
+      { results: domains }.to_json
     else
       handle_error
     end
   end
-  
+
   def handle_error
     message = if tld_matches_if_given
       "domain not valid: #{domain_name}"
@@ -95,7 +93,7 @@ class Whoisy < Sinatra::Base
     end
     { error: message }.to_json
   end
-  
+
   get "/whois" do
     { results: [
       { name: "makevoid.com", ext: "com", available: true },
@@ -103,19 +101,19 @@ class Whoisy < Sinatra::Base
     ] }.to_json
   end
 
-    
+
   get "/whois/*" do |name|
     params[:domain] = name unless name == ""
     @results = whois domain_name
     haml :index
   end
-  
-  
+
+
   helpers do
     def partial(template, item)
       @item = item
       haml template, :layout => false
     end
   end
-  
+
 end

@@ -55,7 +55,7 @@ caption, th, td {
 q, blockquote {
   quotes: none;
 }
-/* line 101, ../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
@@ -66,7 +66,7 @@ a img {
   border: none;
 }
 
-/* line 114, ../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 114, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -86,12 +86,12 @@ a {
   clear: both;
 }
 
-/* line 75, ../../sass/whoisy.sass */
+/* line 77, ../../sass/whoisy.sass */
 html {
   height: 100%;
 }
 
-/* line 78, ../../sass/whoisy.sass */
+/* line 80, ../../sass/whoisy.sass */
 body {
   background: #111111;
   font-family: Helvetica, sans-serif, Arial, Verdana;
@@ -107,27 +107,27 @@ body {
   min-height: 100%;
 }
 
-/* line 87, ../../sass/whoisy.sass */
+/* line 89, ../../sass/whoisy.sass */
 a {
   color: #eeeeee;
 }
 
-/* line 89, ../../sass/whoisy.sass */
+/* line 91, ../../sass/whoisy.sass */
 a:hover {
   color: white;
 }
 
-/* line 96, ../../sass/whoisy.sass */
+/* line 98, ../../sass/whoisy.sass */
 .spinner {
   margin: 0 auto;
 }
 
-/* line 99, ../../sass/whoisy.sass */
+/* line 101, ../../sass/whoisy.sass */
 #container {
   margin-bottom: 30px;
 }
 
-/* line 111, ../../sass/whoisy.sass */
+/* line 113, ../../sass/whoisy.sass */
 header {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff9cc), color-stop(50%, #ffe100), color-stop(100%, #bb8e00));
   background-image: -webkit-linear-gradient(#fff9cc, #ffe100, #bb8e00);
@@ -141,33 +141,33 @@ header {
   -webkit-box-shadow: 0 3px 3px #666666;
   box-shadow: 0 3px 3px #666666;
 }
-/* line 117, ../../sass/whoisy.sass */
+/* line 119, ../../sass/whoisy.sass */
 header .inner {
   width: 93%;
   margin: 0 auto;
   padding: 4px 0;
 }
-/* line 121, ../../sass/whoisy.sass */
+/* line 123, ../../sass/whoisy.sass */
 header .inner a {
   color: black;
 }
-/* line 123, ../../sass/whoisy.sass */
+/* line 125, ../../sass/whoisy.sass */
 header .inner a:hover {
   color: #4d4d4d;
 }
 
-/* line 126, ../../sass/whoisy.sass */
+/* line 128, ../../sass/whoisy.sass */
 #content {
   margin: 20px auto;
 }
 
-/* line 129, ../../sass/whoisy.sass */
+/* line 131, ../../sass/whoisy.sass */
 section.search {
   width: 93%;
   margin: 0 auto 20px;
 }
 
-/* line 133, ../../sass/whoisy.sass */
+/* line 135, ../../sass/whoisy.sass */
 #plate_top {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b3b3b3), color-stop(100%, #4d4d4d));
   background-image: -webkit-linear-gradient(#b3b3b3, #4d4d4d);
@@ -178,7 +178,7 @@ section.search {
   height: 30px;
 }
 
-/* line 137, ../../sass/whoisy.sass */
+/* line 139, ../../sass/whoisy.sass */
 #plate_bottom {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #666666), color-stop(100%, #333333));
   background-image: -webkit-linear-gradient(#666666, #333333);
@@ -195,33 +195,34 @@ section.search {
   box-shadow: 0px -1px 3px #222222;
 }
 
-/* line 145, ../../sass/whoisy.sass */
+/* line 147, ../../sass/whoisy.sass */
 #results {
   position: relative;
 }
 
-/* line 149, ../../sass/whoisy.sass */
+/* line 151, ../../sass/whoisy.sass */
 #plate {
   font-size: 2.5em;
   margin: 0px auto;
   width: 100px;
-  font-family: Times New Roman, Times;
+  font-family: Times New Roman, Times, Courier New;
   color: #262626;
   font-weight: bold;
 }
-/* line 156, ../../sass/whoisy.sass */
+/* line 158, ../../sass/whoisy.sass */
 #plate span {
+  font-family: Helvetica, sans-serif, Arial, Verdana;
   font-size: 0.5em;
   position: relative;
   left: -30px;
   color: #ffe100;
 }
 
-/* line 162, ../../sass/whoisy.sass */
+/* line 165, ../../sass/whoisy.sass */
 #results {
   padding-top: 20px;
 }
-/* line 165, ../../sass/whoisy.sass */
+/* line 168, ../../sass/whoisy.sass */
 #results li {
   display: block;
   padding: 5px 10px;
@@ -238,16 +239,16 @@ section.search {
   background-image: -ms-linear-gradient(#e6e6e6, #808080);
   background-image: linear-gradient(#e6e6e6, #808080);
 }
-/* line 173, ../../sass/whoisy.sass */
+/* line 176, ../../sass/whoisy.sass */
 #results li h3 {
   display: inline;
 }
-/* line 175, ../../sass/whoisy.sass */
+/* line 178, ../../sass/whoisy.sass */
 #results li p {
   font-size: 0.8em;
   display: inline;
 }
-/* line 178, ../../sass/whoisy.sass */
+/* line 181, ../../sass/whoisy.sass */
 #results li.avail_true {
   border: 2px solid #349c00;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00ff27), color-stop(100%, #00aa00));
@@ -257,7 +258,7 @@ section.search {
   background-image: -ms-linear-gradient(#00ff27, #00aa00);
   background-image: linear-gradient(#00ff27, #00aa00);
 }
-/* line 181, ../../sass/whoisy.sass */
+/* line 184, ../../sass/whoisy.sass */
 #results li.avail_true:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #009917), color-stop(100%, #00aa00));
   background-image: -webkit-linear-gradient(#009917, #00aa00);
@@ -266,7 +267,7 @@ section.search {
   background-image: -ms-linear-gradient(#009917, #00aa00);
   background-image: linear-gradient(#009917, #00aa00);
 }
-/* line 184, ../../sass/whoisy.sass */
+/* line 187, ../../sass/whoisy.sass */
 #results li.avail_false {
   border: 2px solid #d10808;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0010), color-stop(100%, #aa0000));
@@ -276,7 +277,7 @@ section.search {
   background-image: -ms-linear-gradient(#ff0010, #aa0000);
   background-image: linear-gradient(#ff0010, #aa0000);
 }
-/* line 187, ../../sass/whoisy.sass */
+/* line 190, ../../sass/whoisy.sass */
 #results li.avail_false:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #99000a), color-stop(100%, #aa0000));
   background-image: -webkit-linear-gradient(#99000a, #aa0000);
@@ -286,7 +287,7 @@ section.search {
   background-image: linear-gradient(#99000a, #aa0000);
 }
 
-/* line 190, ../../sass/whoisy.sass */
+/* line 193, ../../sass/whoisy.sass */
 .whois_box {
   background-color: #aaaaaa;
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(#aaaaaa));
@@ -299,28 +300,29 @@ section.search {
   padding: 8px 15px;
 }
 
-/* line 197, ../../sass/whoisy.sass */
+/* line 200, ../../sass/whoisy.sass */
 #results li .whois_box p {
   display: block;
 }
 
-/* line 201, ../../sass/whoisy.sass */
+/* line 204, ../../sass/whoisy.sass */
 p {
   font-size: 0.9em;
 }
 
-/* line 204, ../../sass/whoisy.sass */
+/* line 207, ../../sass/whoisy.sass */
 h1 {
   margin-bottom: 5px;
-  font-size: 1.5em;
+  font-size: 1.7em;
+  font-family: Times New Roman, Times, Courier New;
 }
-/* line 207, ../../sass/whoisy.sass */
+/* line 211, ../../sass/whoisy.sass */
 h1 span {
   font-size: 0.55em;
   display: block;
 }
 
-/* line 215, ../../sass/whoisy.sass */
+/* line 219, ../../sass/whoisy.sass */
 input, button {
   font-size: 1.3em;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4c4e55), color-stop(100%, #93948e));
@@ -331,37 +333,36 @@ input, button {
   background-image: linear-gradient(#4c4e55, #93948e);
   color: white;
   padding: 6px 10px;
-  -moz-border-radius: 13px;
   -webkit-border-radius: 13px;
-  -o-border-radius: 13px;
+  -moz-border-radius: 13px;
   -ms-border-radius: 13px;
-  -khtml-border-radius: 13px;
+  -o-border-radius: 13px;
   border-radius: 13px;
   border: 2px solid #666666;
   -moz-box-shadow: 1px 2px 3px #777777;
   -webkit-box-shadow: 1px 2px 3px #777777;
   box-shadow: 1px 2px 3px #777777;
 }
-/* line 223, ../../sass/whoisy.sass */
+/* line 227, ../../sass/whoisy.sass */
 input:focus, button:focus {
   -moz-box-shadow: 1px 2px 5px #222222;
   -webkit-box-shadow: 1px 2px 5px #222222;
   box-shadow: 1px 2px 5px #222222;
 }
 
-/* line 228, ../../sass/whoisy.sass */
+/* line 232, ../../sass/whoisy.sass */
 section, form {
   display: block;
   width: 100%;
   margin-right: 20px;
 }
 
-/* line 235, ../../sass/whoisy.sass */
+/* line 239, ../../sass/whoisy.sass */
 input.domain {
   width: 95.882%;
 }
 
-/* line 238, ../../sass/whoisy.sass */
+/* line 242, ../../sass/whoisy.sass */
 input[type=submit], button.refresh {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #60615b), color-stop(100%, #1c1d1f));
   background-image: -webkit-linear-gradient(#60615b, #1c1d1f);
@@ -375,7 +376,7 @@ input[type=submit], button.refresh {
   text-shadow: 0px 0px 1px #ffe100;
   border: 2px solid #666666;
 }
-/* line 245, ../../sass/whoisy.sass */
+/* line 249, ../../sass/whoisy.sass */
 input[type=submit]:hover, button.refresh:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #040404), color-stop(100%, #60615b));
   background-image: -webkit-linear-gradient(#040404, #60615b);
@@ -386,7 +387,7 @@ input[type=submit]:hover, button.refresh:hover {
   color: #ffed66;
   text-shadow: 0px 0px 4px #ffe100;
 }
-/* line 249, ../../sass/whoisy.sass */
+/* line 253, ../../sass/whoisy.sass */
 input[type=submit]:active, button.refresh:active {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #2c2c2a));
   background-image: -webkit-linear-gradient(#000000, #2c2c2a);
@@ -397,7 +398,7 @@ input[type=submit]:active, button.refresh:active {
   border-color: #ffe100;
 }
 
-/* line 253, ../../sass/whoisy.sass */
+/* line 257, ../../sass/whoisy.sass */
 input[type=submit] {
   right: 3.618%;
   padding: 0 20px 0;
@@ -405,30 +406,30 @@ input[type=submit] {
   font-size: 1.8em;
 }
 
-/* line 259, ../../sass/whoisy.sass */
+/* line 263, ../../sass/whoisy.sass */
 .ios input[type=submit] {
   font-size: 1.6em;
 }
 
-/* line 262, ../../sass/whoisy.sass */
+/* line 266, ../../sass/whoisy.sass */
 input#prefs {
   font-size: 1.08em;
   padding: 2px 2px;
   width: 2em;
 }
 
-/* line 267, ../../sass/whoisy.sass */
+/* line 271, ../../sass/whoisy.sass */
 #src, header {
   -webkit-animation-name: changeScale;
   -webkit-transition: all 0.5s ease-in-out;
 }
 
-/* line 271, ../../sass/whoisy.sass */
+/* line 275, ../../sass/whoisy.sass */
 .search {
   display: none;
 }
 
-/* line 274, ../../sass/whoisy.sass */
+/* line 278, ../../sass/whoisy.sass */
 #details {
   opacity: 0;
   display: none;
@@ -437,23 +438,23 @@ input#prefs {
   width: 90%;
   -webkit-transition: opacity 0.8s ease-in-out;
 }
-/* line 281, ../../sass/whoisy.sass */
+/* line 285, ../../sass/whoisy.sass */
 #details .cont {
   display: block;
   color: #222222;
 }
 
-/* line 285, ../../sass/whoisy.sass */
+/* line 289, ../../sass/whoisy.sass */
 #details.open {
   display: block;
 }
 
-/* line 288, ../../sass/whoisy.sass */
+/* line 292, ../../sass/whoisy.sass */
 #details.close {
   opacity: 0;
 }
 
-/* line 291, ../../sass/whoisy.sass */
+/* line 295, ../../sass/whoisy.sass */
 button.refresh {
   float: right;
   width: 35px;
@@ -463,8 +464,8 @@ button.refresh {
   padding: 0;
 }
 
-/* line 300, ../../sass/whoisy.sass */
-.standalone_gradient {
+/* line 304, ../../sass/whoisy.sass */
+.standalone_loader {
   height: 0px;
-  color: white;
+  color: #ffe100;
 }
