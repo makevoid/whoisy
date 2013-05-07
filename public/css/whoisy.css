@@ -24,8 +24,8 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font: inherit;
+  font-size: 100%;
   vertical-align: baseline;
 }
 
@@ -55,7 +55,7 @@ caption, th, td {
 q, blockquote {
   quotes: none;
 }
-/* line 101, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
@@ -66,7 +66,7 @@ a img {
   border: none;
 }
 
-/* line 114, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../.rvm/gems/ruby-1.9.3-p392/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -101,7 +101,6 @@ body {
   background-image: -webkit-linear-gradient(#dfdeda, #92949c);
   background-image: -moz-linear-gradient(#dfdeda, #92949c);
   background-image: -o-linear-gradient(#dfdeda, #92949c);
-  background-image: -ms-linear-gradient(#dfdeda, #92949c);
   background-image: linear-gradient(#dfdeda, #92949c);
   height: 100%;
   min-height: 100%;
@@ -128,7 +127,6 @@ header {
   background-image: -webkit-linear-gradient(#fff9cc, #ffe100, #bb8e00);
   background-image: -moz-linear-gradient(#fff9cc, #ffe100, #bb8e00);
   background-image: -o-linear-gradient(#fff9cc, #ffe100, #bb8e00);
-  background-image: -ms-linear-gradient(#fff9cc, #ffe100, #bb8e00);
   background-image: linear-gradient(#fff9cc, #ffe100, #bb8e00);
   color: black;
   border-bottom: 2px solid #666666;
@@ -168,7 +166,6 @@ section.search {
   background-image: -webkit-linear-gradient(#b3b3b3, #4d4d4d);
   background-image: -moz-linear-gradient(#b3b3b3, #4d4d4d);
   background-image: -o-linear-gradient(#b3b3b3, #4d4d4d);
-  background-image: -ms-linear-gradient(#b3b3b3, #4d4d4d);
   background-image: linear-gradient(#b3b3b3, #4d4d4d);
   height: 30px;
 }
@@ -179,7 +176,6 @@ section.search {
   background-image: -webkit-linear-gradient(#666666, #333333);
   background-image: -moz-linear-gradient(#666666, #333333);
   background-image: -o-linear-gradient(#666666, #333333);
-  background-image: -ms-linear-gradient(#666666, #333333);
   background-image: linear-gradient(#666666, #333333);
   height: 1200px;
   position: absolute;
@@ -230,7 +226,6 @@ section.search {
   background-image: -webkit-linear-gradient(#e6e6e6, #808080);
   background-image: -moz-linear-gradient(#e6e6e6, #808080);
   background-image: -o-linear-gradient(#e6e6e6, #808080);
-  background-image: -ms-linear-gradient(#e6e6e6, #808080);
   background-image: linear-gradient(#e6e6e6, #808080);
 }
 /* line 173, ../../sass/whoisy.sass */
@@ -249,7 +244,6 @@ section.search {
   background-image: -webkit-linear-gradient(#00ff27, #00aa00);
   background-image: -moz-linear-gradient(#00ff27, #00aa00);
   background-image: -o-linear-gradient(#00ff27, #00aa00);
-  background-image: -ms-linear-gradient(#00ff27, #00aa00);
   background-image: linear-gradient(#00ff27, #00aa00);
 }
 /* line 181, ../../sass/whoisy.sass */
@@ -258,7 +252,6 @@ section.search {
   background-image: -webkit-linear-gradient(#009917, #00aa00);
   background-image: -moz-linear-gradient(#009917, #00aa00);
   background-image: -o-linear-gradient(#009917, #00aa00);
-  background-image: -ms-linear-gradient(#009917, #00aa00);
   background-image: linear-gradient(#009917, #00aa00);
 }
 /* line 184, ../../sass/whoisy.sass */
@@ -268,7 +261,6 @@ section.search {
   background-image: -webkit-linear-gradient(#ff0010, #aa0000);
   background-image: -moz-linear-gradient(#ff0010, #aa0000);
   background-image: -o-linear-gradient(#ff0010, #aa0000);
-  background-image: -ms-linear-gradient(#ff0010, #aa0000);
   background-image: linear-gradient(#ff0010, #aa0000);
 }
 /* line 187, ../../sass/whoisy.sass */
@@ -277,7 +269,6 @@ section.search {
   background-image: -webkit-linear-gradient(#99000a, #aa0000);
   background-image: -moz-linear-gradient(#99000a, #aa0000);
   background-image: -o-linear-gradient(#99000a, #aa0000);
-  background-image: -ms-linear-gradient(#99000a, #aa0000);
   background-image: linear-gradient(#99000a, #aa0000);
 }
 
@@ -324,7 +315,6 @@ input, button {
   background-image: -webkit-linear-gradient(#4c4e55, #93948e);
   background-image: -moz-linear-gradient(#4c4e55, #93948e);
   background-image: -o-linear-gradient(#4c4e55, #93948e);
-  background-image: -ms-linear-gradient(#4c4e55, #93948e);
   background-image: linear-gradient(#4c4e55, #93948e);
   color: white;
   padding: 6px 10px;
@@ -354,16 +344,16 @@ section, form {
 
 /* line 237, ../../sass/whoisy.sass */
 input.domain {
-  width: 95.882%;
+  width: 95.88235%;
+  padding-right: 0;
 }
 
-/* line 240, ../../sass/whoisy.sass */
+/* line 241, ../../sass/whoisy.sass */
 input[type=submit], button.refresh {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #60615b), color-stop(100%, #1c1d1f));
   background-image: -webkit-linear-gradient(#60615b, #1c1d1f);
   background-image: -moz-linear-gradient(#60615b, #1c1d1f);
   background-image: -o-linear-gradient(#60615b, #1c1d1f);
-  background-image: -ms-linear-gradient(#60615b, #1c1d1f);
   background-image: linear-gradient(#60615b, #1c1d1f);
   color: #ffe100;
   cursor: pointer;
@@ -371,60 +361,58 @@ input[type=submit], button.refresh {
   text-shadow: 0px 0px 1px #ffe100;
   border: 2px solid #666666;
 }
-/* line 247, ../../sass/whoisy.sass */
+/* line 248, ../../sass/whoisy.sass */
 input[type=submit]:hover, button.refresh:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #040404), color-stop(100%, #60615b));
   background-image: -webkit-linear-gradient(#040404, #60615b);
   background-image: -moz-linear-gradient(#040404, #60615b);
   background-image: -o-linear-gradient(#040404, #60615b);
-  background-image: -ms-linear-gradient(#040404, #60615b);
   background-image: linear-gradient(#040404, #60615b);
   color: #ffed66;
   text-shadow: 0px 0px 4px #ffe100;
 }
-/* line 251, ../../sass/whoisy.sass */
+/* line 252, ../../sass/whoisy.sass */
 input[type=submit]:active, button.refresh:active {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #2c2c2a));
   background-image: -webkit-linear-gradient(#000000, #2c2c2a);
   background-image: -moz-linear-gradient(#000000, #2c2c2a);
   background-image: -o-linear-gradient(#000000, #2c2c2a);
-  background-image: -ms-linear-gradient(#000000, #2c2c2a);
   background-image: linear-gradient(#000000, #2c2c2a);
   border-color: #ffe100;
 }
 
-/* line 255, ../../sass/whoisy.sass */
+/* line 256, ../../sass/whoisy.sass */
 input[type=submit] {
-  right: 3.618%;
+  right: 3.61765%;
   padding: 0 20px 0;
   position: absolute;
   font-size: 1.8em;
 }
 
-/* line 261, ../../sass/whoisy.sass */
+/* line 262, ../../sass/whoisy.sass */
 .ios input[type=submit] {
   font-size: 1.6em;
 }
 
-/* line 264, ../../sass/whoisy.sass */
+/* line 265, ../../sass/whoisy.sass */
 input#prefs {
   font-size: 1.08em;
   padding: 2px 2px;
   width: 2em;
 }
 
-/* line 269, ../../sass/whoisy.sass */
+/* line 270, ../../sass/whoisy.sass */
 #src, header {
   -webkit-animation-name: changeScale;
   -webkit-transition: all 0.5s ease-in-out;
 }
 
-/* line 273, ../../sass/whoisy.sass */
+/* line 274, ../../sass/whoisy.sass */
 .search {
   display: none;
 }
 
-/* line 276, ../../sass/whoisy.sass */
+/* line 277, ../../sass/whoisy.sass */
 #details {
   opacity: 0;
   display: none;
@@ -433,23 +421,23 @@ input#prefs {
   width: 90%;
   -webkit-transition: opacity 0.8s ease-in-out;
 }
-/* line 283, ../../sass/whoisy.sass */
+/* line 284, ../../sass/whoisy.sass */
 #details .cont {
   display: block;
   color: #222222;
 }
 
-/* line 287, ../../sass/whoisy.sass */
+/* line 288, ../../sass/whoisy.sass */
 #details.open {
   display: block;
 }
 
-/* line 290, ../../sass/whoisy.sass */
+/* line 291, ../../sass/whoisy.sass */
 #details.close {
   opacity: 0;
 }
 
-/* line 293, ../../sass/whoisy.sass */
+/* line 294, ../../sass/whoisy.sass */
 button.refresh {
   float: right;
   width: 35px;
@@ -459,13 +447,13 @@ button.refresh {
   padding: 0;
 }
 
-/* line 302, ../../sass/whoisy.sass */
+/* line 303, ../../sass/whoisy.sass */
 .standalone_loader {
   height: 0px;
   color: #ffe100;
 }
 
-/* line 306, ../../sass/whoisy.sass */
+/* line 307, ../../sass/whoisy.sass */
 .spinner {
   position: absolute;
   top: 12px;
