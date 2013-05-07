@@ -1,5 +1,10 @@
 # APP
 
+## Credits
+
+Development etc: @makevoid
+Brainstorming + UI: Jules @julpi Piccotti
+
 ### analytics
 
 https://www.google.com/analytics/settings/home?scid=ANALYTICS_ID

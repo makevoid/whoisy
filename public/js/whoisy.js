@@ -1,35 +1,44 @@
 (function() {
-  var Domain, LoaderView, Result, ResultView, Results, ResultsList, ResultsView, Whoisy, g;
-  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
-    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
-    function ctor() { this.constructor = child; }
-    ctor.prototype = parent.prototype;
-    child.prototype = new ctor;
-    child.__super__ = parent.prototype;
-    return child;
-  };
-  Domain = (function() {
-    __extends(Domain, Backbone.Model);
+  var Domain, LoaderView, Result, ResultView, Results, ResultsList, ResultsView, Whoisy, g,
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  Domain = (function(_super) {
+
+    __extends(Domain, _super);
+
     function Domain() {
-      Domain.__super__.constructor.apply(this, arguments);
+      return Domain.__super__.constructor.apply(this, arguments);
     }
+
     return Domain;
-  })();
-  Result = (function() {
-    __extends(Result, Backbone.Model);
+
+  })(Backbone.Model);
+
+  Result = (function(_super) {
+
+    __extends(Result, _super);
+
     function Result() {
-      Result.__super__.constructor.apply(this, arguments);
+      return Result.__super__.constructor.apply(this, arguments);
     }
+
     return Result;
-  })();
-  Results = (function() {
-    __extends(Results, Backbone.Model);
+
+  })(Backbone.Model);
+
+  Results = (function(_super) {
+
+    __extends(Results, _super);
+
     function Results() {
-      Results.__super__.constructor.apply(this, arguments);
+      return Results.__super__.constructor.apply(this, arguments);
     }
+
     Results.prototype.initialize = function() {
       return this.bind("change", this.results, this);
     };
+
     Results.prototype.results = function() {
       if (this.attributes.error) {
         return this.gotError(this.attributes.error);
@@ -37,43 +46,73 @@
         return this.trigger("gotResult");
       }
     };
+
     Results.prototype.gotError = function(error) {
       return console.log("got Error: ", error);
     };
+
     return Results;
-  })();
-  ResultsList = (function() {
-    __extends(ResultsList, Backbone.Collection);
+
+  })(Backbone.Model);
+
+  ResultsList = (function(_super) {
+
+    __extends(ResultsList, _super);
+
     function ResultsList() {
-      ResultsList.__super__.constructor.apply(this, arguments);
+      return ResultsList.__super__.constructor.apply(this, arguments);
     }
+
     ResultsList.prototype.model = Result;
+
     ResultsList.prototype.url = "/whois";
+
     return ResultsList;
-  })();
-  LoaderView = (function() {
-    __extends(LoaderView, Backbone.View);
-    function LoaderView() {
-      LoaderView.__super__.constructor.apply(this, arguments);
-    }
+
+  })(Backbone.Collection);
+
+  LoaderView = (function(_super) {
+
+    __extends(LoaderView, _super);
+
     LoaderView.prototype.element = ".standalone_loader";
-    LoaderView.prototype.load = function() {};
-    LoaderView.prototype.loaded = function() {};
-    return LoaderView;
-  })();
-  ResultView = (function() {
-    __extends(ResultView, Backbone.View);
-    function ResultView() {
-      ResultView.__super__.constructor.apply(this, arguments);
+
+    LoaderView.prototype.element = ".spinner";
+
+    function LoaderView() {
+      this.spinner = $(this.element);
     }
+
+    LoaderView.prototype.load = function() {
+      return this.spinner.show("slow");
+    };
+
+    LoaderView.prototype.loaded = function() {
+      return this.spinner.hide("fast");
+    };
+
+    return LoaderView;
+
+  })(Backbone.View);
+
+  ResultView = (function(_super) {
+
+    __extends(ResultView, _super);
+
+    function ResultView() {
+      return ResultView.__super__.constructor.apply(this, arguments);
+    }
+
     ResultView.prototype.initialize = function(opts) {
       this.model = opts["model"];
       return this.model.bind("change", this.resetAndRender, this);
     };
+
     ResultView.prototype.resetAndRender = function() {
       window.results_list.trigger("reset");
       return this.render();
     };
+
     ResultView.prototype.render = function() {
       var cont, content, haml;
       cont = $(".result_view").html();
@@ -82,20 +121,28 @@
       $(this.el).html(content);
       return this;
     };
+
     return ResultView;
-  })();
-  ResultsView = (function() {
-    __extends(ResultsView, Backbone.View);
+
+  })(Backbone.View);
+
+  ResultsView = (function(_super) {
+
+    __extends(ResultsView, _super);
+
     function ResultsView() {
-      ResultsView.__super__.constructor.apply(this, arguments);
+      return ResultsView.__super__.constructor.apply(this, arguments);
     }
+
     ResultsView.prototype.element = ".results";
+
     ResultsView.prototype.initialize = function(opts) {
       this.model = opts["model"];
       window.deb = this.model;
       this.model.bind("gotResult", this.render, this);
       return this.is_open = false;
     };
+
     ResultsView.prototype.render = function() {
       var content, result, result_attrs, view, _i, _len, _ref, _results;
       window.loader.loaded();
@@ -116,6 +163,7 @@
       }
       return _results;
     };
+
     ResultsView.prototype.open = function() {
       var height;
       height = $("body").height() - 300;
@@ -125,22 +173,30 @@
       });
       return this.is_open = true;
     };
+
     ResultsView.prototype.close = function() {
       return $("#plate_bottom").anim({
         top: 0
       });
     };
+
     return ResultsView;
-  })();
-  Whoisy = (function() {
-    __extends(Whoisy, Backbone.Router);
+
+  })(Backbone.View);
+
+  Whoisy = (function(_super) {
+
+    __extends(Whoisy, _super);
+
     function Whoisy() {
-      Whoisy.__super__.constructor.apply(this, arguments);
+      return Whoisy.__super__.constructor.apply(this, arguments);
     }
+
     Whoisy.prototype.initialize = function() {
       $(function() {});
       return window.loader = new LoaderView();
     };
+
     Whoisy.prototype.initSearch = function() {
       return $(function() {
         return $("#search").bind("submit", function() {
@@ -148,6 +204,7 @@
         });
       });
     };
+
     Whoisy.prototype.query = function(domain) {
       var resultsView;
       this.results_list = new ResultsList();
@@ -160,14 +217,24 @@
         model: this.results
       });
       resultsView.close();
-      this.results.fetch();
+      this.results.fetch({
+        error: function() {
+          return window.loader.loaded();
+        }
+      });
       return window.loader.load();
     };
+
     return Whoisy;
-  })();
+
+  })(Backbone.Router);
+
   g = window;
+
   g.whoisy = new Whoisy;
+
   whoisy.initSearch();
+
   $(function() {
     var height;
     $("body").bind("touchmove", function(evt) {
@@ -185,4 +252,5 @@
     height = $(".results_list").height() + 20;
     return $("#plate_bottom").height($("body").height() - height);
   });
+
 }).call(this);

@@ -14,8 +14,8 @@
   dl, dt, dd, ol, ul, li,
   fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed, 
-  figure, figcaption, footer, header, hgroup, 
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video
     +reset-box-model
@@ -36,7 +36,7 @@
   +reset-html5
 
   // de-reset - useful defaults
-  h1, h2, h3, h4, h5, h6  
+  h1, h2, h3, h4, h5, h6
     font-weight: bold
 
 +custom-reset
@@ -55,13 +55,13 @@ $table-color: #EBEFF0
 
 
 
-a 
+a
   text-decoration: none
-  
+
 .clear
   clear: both
 
-  
+
 // style
 
 $bg: #111
@@ -95,12 +95,10 @@ a:hover
 // input[type='submit'], input.submit, a.button
 
 
-.spinner
-  margin: 0 auto
 
 #container
   margin-bottom: 30px
-  
+
 $inner_width: 93%
 
 // colors
@@ -124,10 +122,10 @@ header
       color: $text_color
       &:hover
         color: lighten($text_color, 30%)
-  
+
 #content
   margin: 20px auto
-  
+
 section.search
   width: $inner_width
   margin: 0 auto 20px
@@ -135,7 +133,7 @@ section.search
 #plate_top
   +background-image(linear-gradient(lighten($dark_grey, 30%), darken($dark_grey, 10%)))
   height: 30px
-  
+
 #plate_bottom
   +background-image(linear-gradient(darken($dark_grey, 0%), darken($dark_grey, 20%)))
   height: 1200px
@@ -143,7 +141,7 @@ section.search
   width: 100%
   top: 0
   +box-shadow-mk(0px, -1px, 3px, #222)
-  
+
 #results
   position: relative
   // height: 0
@@ -182,28 +180,28 @@ section.search
     +background-image(linear-gradient(#00FF27, #00FF27 - #555))
     &:hover
       +background-image(linear-gradient(darken(#00FF27, 20%), #00FF27 - #555))
-      
+
   li.avail_false
     border: 2px solid rgb(209,8,8)
     +background-image(linear-gradient(#FF0010, #FF0010 - #555))
     &:hover
       +background-image(linear-gradient(darken(#FF0010, 20%), #FF0010 - #555))
 
-.whois_box    
+.whois_box
   +gradient(#FFF, #AAA)
   +rounded(20px)
   color: #222
   padding: 8px 15px
   //margin: 15px 20px
 
-#results li .whois_box p 
+#results li .whois_box p
   display: block
-  
 
-p 
+
+p
   font-size: 0.9em
-  
-h1 
+
+h1
   margin-bottom: 5px
   font-size: 1.7em
   font-family: $title_fonts
@@ -211,10 +209,10 @@ h1
     font-family: $default_fonts
     font-size: 0.55em
     display: block
-    
-    
+
+
 $input_padding_vert:  6px
-$input_padding_horiz: 10px 
+$input_padding_horiz: 10px
 
 input, button
   font-size: 1.3em
@@ -228,7 +226,7 @@ input, button
     +box-shadow-mk(1px, 2px, 5px, #222)
 
 
-  
+
 section, form
   display: block
   width: 100%
@@ -238,7 +236,7 @@ $margin_right: (100% - $inner_width) / 1.7
 
 input.domain
   width: 100% - $margin_right
-  
+
 input[type=submit], button.refresh
   +background-image(linear-gradient(darken(#93948E, 20%), darken(#4C4E55, 20%)))
   color: $gold
@@ -259,7 +257,7 @@ input[type=submit]
   padding: 0 $input_padding_horiz*2 0
   position: absolute
   font-size: 1.8em
-  
+
 .ios input[type=submit]
   font-size: 1.6em
 
@@ -299,11 +297,19 @@ button.refresh
   margin: 10px
   font-size: 0.9em
   padding: 0
-  
-  
+
+
 .standalone_loader
   height: 0px
   color: $gold
+
+.spinner
+  position: absolute
+  top: 12px
+  left: 50%
+  margin-left: 30px
+  display: none
+
 
 @media (max-width:480px)
 
