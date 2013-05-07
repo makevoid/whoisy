@@ -12,7 +12,7 @@
     "url": "http://makevoid.com"
   },
   "default_locale": "en",
-  "fullscreen": "true"
+  "fullscreen": "true",
   "locales": {
     "it": {
       "description": "Whois a portata di palmo"
