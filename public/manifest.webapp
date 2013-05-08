@@ -3,9 +3,10 @@
   "description": "The smart mobile whois",
   "launch_path": "/",
   "icons": {
-    "72": "/imgs/icon_touch72.png",
-    "60": "/imgs/icon_touch60.png",
-    "30": "/imgs/icon_touch30.png"
+    "128":  "/imgs/icon_touch128.png",
+    "72":   "/imgs/icon_touch72.png",
+    "60":   "/imgs/icon_touch60.png",
+    "30":   "/imgs/icon_touch30.png"
   },
   "developer": {
     "name": "makevoid",
