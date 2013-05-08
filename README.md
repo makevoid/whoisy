@@ -29,5 +29,6 @@ features needed:
 
 ## Credits
 
-Development etc: @makevoid
-Brainstorming + UI: Jules @julpi Piccotti
+Development: @makevoid
+
+Advisor: Jules @julpi Piccotti
