@@ -1,7 +1,7 @@
 # Whoisy
 ## The smart mobile Whois app
 
-# launching it
+### launching it
 
 you need to have ruby 1.9+ (2.0 is also ok) installed
 
@@ -15,7 +15,7 @@ will start the server, but:
 
 instead will start sass, coffeescript recompilation and browser reloading
 
-# details 
+### details 
 
 Simple mobile whois client - locked by default on com/net/org/it domains extensions.
 
@@ -27,7 +27,7 @@ features needed:
 - display whois details
 
 
-## Credits
+### Credits
 
 Development: @makevoid
 
