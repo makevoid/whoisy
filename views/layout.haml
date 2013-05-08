@@ -5,17 +5,17 @@
     %link{ href: "/css/whoisy.css", rel: "stylesheet" }
     %meta{ charset: "utf-8" }
     %meta{ :"http-equiv" => "X-UA-Compatible", content: "IE=edge,chrome=1" }
-    %meta{ name: "keywords", content: "whoisy, whois, mobile, app, domain, firefox os, ffoxos, android, boot2gecko, ios, iphone, ipad, web, tablet" }    
-    %meta{ name: "author", content: "Francesco 'makevoid' Canessa" }    
+    %meta{ name: "keywords", content: "whoisy, whois, mobile, app, domain, firefox os, ffoxos, android, boot2gecko, ios, iphone, ipad, web, tablet" }
+    %meta{ name: "author", content: "Francesco 'makevoid' Canessa" }
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0, user-scalable=no" }
     %meta{ name: "apple-mobile-web-app-capable", content: "yes" }
     %meta{ name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" }
-    - partial :metas
+    - partial :_metas
     -#%meta{ name: "apple-touch-icon", href: "/imgs/icon_touch.png" }
     -#%meta{ name: "apple-touch-icon", sizes: "72x72", href: "/imgs/icon_touch72.png" }
     %script{ src: "/js/vendor/modernizr.js", type: "text/javascript" }
     %script{ src: "/js/vendor/zepto.js", type: "text/javascript" }
-  %body{ class: body_class }  
+  %body{ class: body_class }
     #container
       .standalone_loader
       :javascript
@@ -27,7 +27,7 @@
       %header
         %button.refresh ↺
         .inner
-          %h1 
+          %h1
             - link_to "Whoisy", "/"
             %span
               The smart mobile whois!

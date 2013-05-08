@@ -110,7 +110,7 @@ class Whoisy < Sinatra::Base
 
 
   helpers do
-    def partial(template, item)
+    def partial(template, item=nil)
       @item = item
       haml template, :layout => false
     end
