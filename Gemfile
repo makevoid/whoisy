@@ -1,4 +1,4 @@
-source :rubygems
+source "http://rubygems.org"
 
 
 gem 'sinatra'
@@ -33,6 +33,6 @@ gem 'guard-compass'
 group :test do
   gem "rspec"
   gem "webrat"
-  gem "autotest-growl"
+  #gem "autotest-growl"
   gem "capybara"
 end
