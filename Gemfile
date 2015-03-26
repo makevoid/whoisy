@@ -7,6 +7,8 @@ gem 'haml'
 gem "sass"
 # gem 'rack-flash'
 
+gem "skylight"
+
 group :models do
   gem "json"
   gem "whois"
@@ -22,12 +24,14 @@ end
 
 gem 'voidtools'
 
+group :development do
 
+  gem "guard"
+  gem "guard-livereload"
+  gem "guard-coffeescript"
+  gem 'guard-compass'
 
-gem "guard"
-gem "guard-livereload"
-gem "guard-coffeescript"
-gem 'guard-compass'
+end
 
 
 group :test do

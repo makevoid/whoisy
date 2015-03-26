@@ -29,7 +29,9 @@ end
 
 class Whoiser
 
-  WHOIS = ENV["RACK_ENV"] != "test" ? Whois::Client.new(timeout: 5) : Whois::FakeClient.new
+  # .new(timeout: 5)
+
+  WHOIS = ENV["RACK_ENV"] != "test" ? Whois : Whois::FakeClient.new
 
   def self.whois(domain)
     new(domain).whois
@@ -104,7 +106,7 @@ class Whoiser
   include Mhash
 
   def do_single_whois(domain)
-    result = WHOIS.query "#{domain.name}.#{domain.ext}"
+    result = WHOIS.lookup "#{domain.name}.#{domain.ext}"
     to_mhash( domain.merge({ available: result.available?, response: result }) )
   end
 
